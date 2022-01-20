@@ -34,7 +34,10 @@
           ></svg-icon>
         </span>
       </el-form-item>
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+      <el-button
+        @click="loginChange"
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
         >登录
       </el-button>
     </el-form>
@@ -43,9 +46,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { validatorPassWord } from './rules'
 const loginFrom = ref({
-  username: 'super-admin',
+  username: 'admin',
   password: '123456'
 })
 const loginRules = ref({
@@ -70,6 +74,10 @@ const passwordTypeChange = () => {
   passwordType.value === 'password'
     ? (passwordType.value = 'text')
     : (passwordType.value = 'password')
+}
+const store = useStore()
+const loginChange = () => {
+  store.dispatch('user/LOGINASYNC', loginFrom.value)
 }
 </script>
 <style lang="scss" scoped>

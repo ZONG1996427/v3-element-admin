@@ -6,6 +6,17 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  // 添加proxy代理
+  devServer: {
+    // 转发地址
+    proxy: {
+      '/api': {
+        target: 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/',
+        changeOrigin: true // 开启跨域
+      }
+    }
+  },
+
   chainWebpack(config) {
     // 设置 svg-sprite-loader
     // 插件的注入以及处理,这是chainWebpack的高级链式写法

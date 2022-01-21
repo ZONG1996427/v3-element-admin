@@ -6,6 +6,14 @@ const login = (data) => {
     data
   })
 }
+// 获取用户
+const getUserInfo = () => {
+  return request({
+    url: '/sys/profile',
+    method: 'get'
+  })
+}
 export {
-  login
+  login,
+  getUserInfo
 }

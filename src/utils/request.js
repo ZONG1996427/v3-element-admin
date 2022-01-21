@@ -1,11 +1,30 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import store from '@/store'
+import { isCheckTimeout } from '@/utils/auth'
 // 创建
 const request = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000
 })
+// 添加请求拦截器
+request.interceptors.request.use(function (config) {
+  // 在发送请求之前做些什么
+  if (store.getters.token) {
+    config.headers.Authorization = store.getters.token
+    console.log(isCheckTimeout())
+    if (isCheckTimeout()) {
+      console.log(222)
+      store.dispatch('user/logout')
+      ElMessage.error('token失效,退出登录')
+    }
+  }
 
+  return config
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error)
+})
 // 处理响应拦截器
 request.interceptors.response.use(result => {
   // 响应成功

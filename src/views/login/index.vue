@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginFrom" :rules="loginRules">
+    <el-form
+      class="login-form"
+      ref="loginForm"
+      :model="loginFrom"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3>用户登录</h3>
       </div>
@@ -37,6 +42,7 @@
       <el-button
         @click="loginChange"
         type="primary"
+        :loading="loginLoading"
         style="width: 100%; margin-bottom: 30px"
         >登录
       </el-button>
@@ -76,8 +82,20 @@ const passwordTypeChange = () => {
     : (passwordType.value = 'password')
 }
 const store = useStore()
+// 通过ref声明一个实例出来,注意,这个命名要跟元素的ref一样菜下
+const loginForm = ref(null)
+const loginLoading = ref(false)
 const loginChange = () => {
-  store.dispatch('user/LOGINASYNC', loginFrom.value)
+  // 校验是否通过
+  loginForm.value.validate((vaild) => {
+    if (!vaild) return
+    loginLoading.value = true
+    store.dispatch('user/login', loginFrom.value).finally(() => {
+      // 接口成功/失败后loding状态取消
+      loginLoading.value = false
+    })
+  })
+  // store.dispatch('user/getUserInfo')
 }
 </script>
 <style lang="scss" scoped>

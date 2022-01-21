@@ -1,3 +1,8 @@
+// 必须按顺序引入，先引入定义scss常量的文件，因为下面的文件都有用到里面的常量css，否则报错
+@import './variables.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
+
 html,
 body {
   height: 100%;

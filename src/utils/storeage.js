@@ -1,8 +1,6 @@
 
 // 设置
 export const setItem = (key, value) => {
-  console.log(key)
-  console.log(value)
   if (typeof value === 'object') {
     // 进行转换成字符串
     value = JSON.stringify(value)

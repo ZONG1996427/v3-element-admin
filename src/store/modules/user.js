@@ -3,7 +3,7 @@ import { login } from '@/api/user'
 import { TOKEN } from '@/constant/index'
 import { setItem, getItem } from '@/utils/storeage'
 const state = () => ({
-  token: getItem() || ''
+  token: getItem(TOKEN) || ''
 })
 const actions = {
   LOGINASYNC({ commit }, userInfo) {
@@ -13,13 +13,15 @@ const actions = {
         username,
         password
       }).then((res) => {
-        commit('SET_TOKEN', res.data.data.token)
+        console.log(res)
+        commit('SET_TOKEN', res.token)
         resolve(res)
       }).catch((err) => reject(err))
     })
   }
 }
 const mutations = {
+  // 设置token
   SET_TOKEN(state, token) {
     setItem(TOKEN, token)
   }

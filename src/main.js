@@ -8,6 +8,7 @@ import installIcons from '@/icons'
 // 导入全局样式
 import './styles/index.scss'
 
+import './premission.js'
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)

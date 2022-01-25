@@ -120,11 +120,35 @@ const privateRoutes = [
       {
         path: '/superView/test',
         component: () => import('@/views/super-view/test'),
+        name: 'test',
         meta: {
           title: 'test',
           icon: 'el-icon-s-platform',
           name: 'super测试页'
         }
+      },
+      {
+        path: '/superView/order',
+        component: () => import('@/views/super-view/order-manage/orderList'),
+        name: 'orderManage',
+        redirect: '/superView/order/list',
+        meta: {
+          title: 'orderManage',
+          icon: 'el-icon-s-order',
+          name: '商品管理'
+        },
+        children: [
+          {
+            path: '/superView/order/list',
+            component: () => import('@/views/super-view/order-manage/orderList'),
+            name: 'orderList',
+            meta: {
+              title: 'orderList',
+              icon: 'el-icon-s-cooperation',
+              name: '商品列表'
+            }
+          }
+        ]
       }
     ]
   }

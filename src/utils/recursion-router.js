@@ -30,14 +30,12 @@ const recursionRouter = (userRouter = [], allRouter = []) => {
 
 // 再递归过滤没有icon的路由，不显示在菜单，其他这两个方法可以再进一步封装，不过这样分成两个容易维护些
 const filterRoute = (routes) => {
-  console.log(routes)
   const showRoutes = []
   routes.forEach((item, index) => {
     if (item.meta.icon) {
       if (item.children && item.children.length > 0) {
         item.children = filterRoute(item.children)
       }
-      console.log(item)
       showRoutes.push(item)
     }
   })

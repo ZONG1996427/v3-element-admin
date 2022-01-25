@@ -77,9 +77,7 @@ const mutations = {
   },
   // 动态添加的路由
   ADD_ALL_ROUTERS_LIST(state, route) {
-    console.log(route)
     state.addRoutresList = route
-    console.log(state)
   },
   // 退出时清除当前用户路由
   CLEAR_ALL_ROUTERS(state) {

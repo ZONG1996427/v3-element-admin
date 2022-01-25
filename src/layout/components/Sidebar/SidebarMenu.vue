@@ -21,7 +21,6 @@ const menuList = computed(() => {
   return store.getters.menuList
 })
 const route = useRoute()
-console.log(route)
 // 刷新页面记住当前点击页，这是借用新方法来实现，往常都是定一个变量放在vuex中或者
 // data中，然后点击事件后存储到local中，然后created再取出来进行赋值
 const activeMenu = computed(() => {

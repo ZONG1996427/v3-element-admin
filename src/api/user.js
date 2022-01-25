@@ -7,10 +7,11 @@ const login = (data) => {
   })
 }
 // 获取用户
-const getUserInfo = () => {
+const getUserInfo = (params) => {
   return request({
     url: '/sys/profile',
-    method: 'get'
+    method: 'get',
+    params
   })
 }
 export {

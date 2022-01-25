@@ -12,9 +12,7 @@ request.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   if (store.getters.token) {
     config.headers.Authorization = store.getters.token
-    console.log(isCheckTimeout())
     if (isCheckTimeout()) {
-      console.log(222)
       store.dispatch('user/logout')
       ElMessage.error('token失效,退出登录')
     }
@@ -39,6 +37,11 @@ request.interceptors.response.use(result => {
   }
   // 响应失败
 }, err => {
+  // 服务端token过期，判断状态码
+  if (err.response && err.response.data && err.response.data.code === 401) {
+    ElMessage(new Error(err.message))
+    store.dispatch('user/logout')
+  }
   ElMessage(new Error(err.message))
   return Promise.reject(err)
 })

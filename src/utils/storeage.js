@@ -14,8 +14,6 @@ export const setItem = (key, value) => {
  */
 export const getItem = key => {
   const data = window.localStorage.getItem(key)
-  console.log(data, '时间戳')
-  console.log(key, 'key')
   try {
     return JSON.parse(data)
   } catch (err) {

@@ -19,6 +19,7 @@
           name="name"
           type="text"
           v-model="loginFrom.username"
+          @keydown.enter="loginChange"
         ></el-input>
       </el-form-item>
       <!-- 密码-->
@@ -31,6 +32,7 @@
           name="password"
           :type="passwordType"
           v-model="loginFrom.password"
+          @keydown.enter="loginChange"
         ></el-input>
         <span class="show-pwd">
           <svg-icon
@@ -40,12 +42,17 @@
         </span>
       </el-form-item>
       <el-button
+        @keydown.enter="loginChange"
         @click="loginChange"
         type="primary"
         :loading="loginLoading"
         style="width: 100%; margin-bottom: 30px"
         >登录
       </el-button>
+      <span style="color: #ffffff">
+        <div>超级管理员账号:super-admin 密码随便填</div>
+        <div style="margin-top: 20px">未充钱账号:admin 密码随便填</div>
+      </span>
     </el-form>
   </div>
 </template>
@@ -54,6 +61,8 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatorPassWord } from './rules'
+import { setItem } from '@/utils/storeage'
+import { USERNAME } from '@/constant/index'
 const loginFrom = ref({
   username: 'admin',
   password: '123456'
@@ -90,10 +99,15 @@ const loginChange = () => {
   loginForm.value.validate((vaild) => {
     if (!vaild) return
     loginLoading.value = true
-    store.dispatch('user/login', loginFrom.value).finally(() => {
-      // 接口成功/失败后loding状态取消
-      loginLoading.value = false
-    })
+    store
+      .dispatch('user/login', loginFrom.value)
+      .finally(() => {
+        // 接口成功/失败后loding状态取消
+        loginLoading.value = false
+      })
+      .then(() => {
+        setItem(USERNAME, loginFrom.value.username)
+      })
   })
   // store.dispatch('user/getUserInfo')
 }

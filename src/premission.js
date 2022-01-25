@@ -14,8 +14,12 @@ router.beforeEach(async (to, from, next) => {
       // 判断是否存在用户信息,如果不存在,则调接口获取,就是为了页面刷新立刻获取
       if (!Object.keys(store.getters.userInfo).length) {
         await store.dispatch('user/getUserInfo')
+        next({
+          path: to.path
+        })
+      } else {
+        next()
       }
-      next()
     }
   } else {
     // 2-没有token的情况下，可以进入白名单

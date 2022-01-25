@@ -1,3 +1,4 @@
 export const TOKEN = 'token'
+export const USERNAME = 'userName'
 export const SET_TIME = 'setTime'
-export const SET_TIME_NEW = 2 * 1000 // 一小时过期
+export const SET_TIME_NEW = 1 * 3600 * 1000 // 一小时过期

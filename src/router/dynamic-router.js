@@ -8,7 +8,8 @@ const privateRoutes = [
     name: 'user',
     meta: {
       title: 'user',
-      icon: 'personnel'
+      icon: 'personnel',
+      name: '用户管理'
     },
     children: [
       {
@@ -16,7 +17,8 @@ const privateRoutes = [
         component: () => import('@/views/user-manage/index'),
         meta: {
           title: 'userManage',
-          icon: 'personnel-manage'
+          icon: 'personnel-manage',
+          name: '用户列表'
         }
       },
       {
@@ -24,7 +26,8 @@ const privateRoutes = [
         component: () => import('@/views/role-list/index'),
         meta: {
           title: 'roleList',
-          icon: 'role'
+          icon: 'role',
+          name: '角色列表'
         }
       },
       {
@@ -32,7 +35,8 @@ const privateRoutes = [
         component: () => import('@/views/permission-list/index'),
         meta: {
           title: 'permissionList',
-          icon: 'permission'
+          icon: 'permission',
+          name: '权限列表'
         }
       },
       {
@@ -40,7 +44,8 @@ const privateRoutes = [
         name: 'userInfo',
         component: () => import('@/views/user-info/index'),
         meta: {
-          title: 'userInfo'
+          title: 'userInfo',
+          name: '用户详情'
         }
       },
       {
@@ -48,7 +53,8 @@ const privateRoutes = [
         name: 'import',
         component: () => import('@/views/import/index'),
         meta: {
-          title: 'excelImport'
+          title: 'excelImport',
+          name: '导入'
         }
       }
     ]
@@ -60,7 +66,8 @@ const privateRoutes = [
     redirect: '/article/ranking',
     meta: {
       title: 'article',
-      icon: 'article'
+      icon: 'article',
+      name: '文章管理'
     },
     children: [
       {
@@ -68,14 +75,16 @@ const privateRoutes = [
         component: () => import('@/views/article-ranking/index'),
         meta: {
           title: 'articleRanking',
-          icon: 'article-ranking'
+          icon: 'article-ranking',
+          name: '文章排名'
         }
       },
       {
         path: '/article/detail',
         component: () => import('@/views/article-detail/index'),
         meta: {
-          title: 'articleDetail'
+          title: 'articleDetail',
+          name: '文章详情'
         }
       },
       {
@@ -83,14 +92,16 @@ const privateRoutes = [
         component: () => import('@/views/article-create/index'),
         meta: {
           title: 'articleCreate',
-          icon: 'article-create'
+          icon: 'article-create',
+          name: '创建文章'
         }
       },
       {
         path: '/article/editor',
         component: () => import('@/views/article-create/index'),
         meta: {
-          title: 'articleEditor'
+          title: 'articleEditor',
+          name: '编辑文章'
         }
       }
     ]
@@ -102,7 +113,8 @@ const privateRoutes = [
     redirect: '/superView/test',
     meta: {
       title: 'superView',
-      icon: 'superView'
+      icon: 'el-icon-star-off',
+      name: '超级管理'
     },
     children: [
       {
@@ -110,7 +122,8 @@ const privateRoutes = [
         component: () => import('@/views/super-view/test'),
         meta: {
           title: 'test',
-          icon: 'test'
+          icon: 'el-icon-s-platform',
+          name: 'super测试页'
         }
       }
     ]

@@ -4,7 +4,7 @@ import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
 import router, { commonRouters } from '@/router'
 import { setTime } from '@/utils/auth'
-import { recursionRouter } from '@/utils/recursion-router'
+import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
 const state = () => ({
   token: getItem(TOKEN) || '',
@@ -49,9 +49,10 @@ const actions = {
     // console.log(MainContainer) // 返回根组件
     const children = MainContainer.children
     children.push(...routes)
-    // console.log(children)
+    // 过滤不需要显示在菜单中的路由，例如新增，详情，编辑等页面
+    const filterShowRouters = filterRoute(JSON.parse(JSON.stringify(children)))
     // 生成菜单
-    commit('SET_SIDEBAR_MENU', children)
+    commit('SET_SIDEBAR_MENU', filterShowRouters)
     // 初始化路由
     // let initialRoutes = router.options.routes
     routes.forEach(item => {

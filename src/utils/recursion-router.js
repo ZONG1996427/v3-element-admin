@@ -1,6 +1,6 @@
 /**
  * 1-用接口返回的路由跟前端定义好的全部路由进行匹配
- * 2-设置默认路由，这个不一样真用
+ * 2-过滤没有icon的路由，不显示在菜单
  */
 
 /**
@@ -28,16 +28,22 @@ const recursionRouter = (userRouter = [], allRouter = []) => {
   return realRoutes
 }
 
-const setDefaultRoute = (routes) => {
+// 再递归过滤没有icon的路由，不显示在菜单，其他这两个方法可以再进一步封装，不过这样分成两个容易维护些
+const filterRoute = (routes) => {
+  console.log(routes)
+  const showRoutes = []
   routes.forEach((item, index) => {
-    if (item.children && item.children.length > 0) {
-      // 默认让每个二级菜单重定向到自己子菜单的第一个路由
-      item.redirect = { name: item.children[0].name }
-      setDefaultRoute(item.children)
+    if (item.meta.icon) {
+      if (item.children && item.children.length > 0) {
+        item.children = filterRoute(item.children)
+      }
+      console.log(item)
+      showRoutes.push(item)
     }
   })
+  return showRoutes
 }
 export {
   recursionRouter,
-  setDefaultRoute
+  filterRoute
 }

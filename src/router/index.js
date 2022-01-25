@@ -19,7 +19,8 @@ export const commonRouters = [
         component: () => import('@/views/profile/index'),
         meta: {
           title: 'profile',
-          icon: 'el-icon-user'
+          icon: 'el-icon-user',
+          name: '用户中心'
         }
       }
     ]

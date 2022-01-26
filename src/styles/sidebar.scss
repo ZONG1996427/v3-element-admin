@@ -2,13 +2,13 @@
 #app {
   .main-container {
     min-height: 100%;
-    transition: margin-left 0.28s;
+    transition: margin-left #{$sideBarDuration};
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
+    transition: width #{$sideBarDuration};
     width: $sideBarWidth !important;
     height: 100%;
     position: fixed;
@@ -122,7 +122,7 @@
         }
       }
     }
-
+    // 菜单栏收缩时的样式，隐藏掉文字
     .el-menu--collapse {
       .el-submenu {
         & > .el-submenu__title {
@@ -163,8 +163,6 @@
 
   // 菜单项过长时
   > .el-menu--popup {
-    max-height: 100vh;
-    overflow-y: auto;
 
     &::-webkit-scrollbar-track-piece {
       background: #d3dce6;

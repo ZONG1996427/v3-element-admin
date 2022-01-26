@@ -4,7 +4,8 @@ const getters = {
   token: state => state.user.token,
   userInfo: state => state.user.userInfo,
   menuList: state => state.user.sidebarMenu,
-  cssVar: state => variables
+  cssVar: state => variables,
+  sidebarOpened: state => state.app.sidebarOpened
 }
 
 export default getters

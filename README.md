@@ -12,24 +12,19 @@
 文件目录后期整理：
 # vue3-elementPlus-admin
 
-## Project setup
+## 依赖安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动项目
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### 打包项目
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration

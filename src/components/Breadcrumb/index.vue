@@ -7,10 +7,10 @@
         :key="item.path"
       >
         <span class="no-redirect" v-if="index === breadcrumbData.length - 1">{{
-          item.meta.name
+          generateTitle(item.meta.title)
         }}</span>
         <span class="redirect" @click.prevent="RouteClick(item)" v-else>{{
-          item.meta.name
+          generateTitle(item.meta.title)
         }}</span>
       </el-breadcrumb-item>
     </transition-group>
@@ -19,6 +19,12 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+const i18n = useI18n()
+// 切换菜单栏中英文
+const generateTitle = (title) => {
+  return i18n.t('route' + '.' + title)
+}
 const route = useRoute()
 const breadcrumbData = ref([])
 // 获取当前面包屑层及

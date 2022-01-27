@@ -7,7 +7,8 @@
       :rules="loginRules"
     >
       <div class="title-container">
-        <h3>用户登录</h3>
+        <h3>{{ $t('login.title') }}</h3>
+        <langSelect class="langSelect" />
       </div>
       <!-- 用户名 -->
       <el-form-item prop="username">
@@ -47,7 +48,7 @@
         type="primary"
         :loading="loginLoading"
         style="width: 100%; margin-bottom: 30px"
-        >登录
+        >{{ $t('login.loginBtn') }}
       </el-button>
       <span style="color: #ffffff">
         <div>超级管理员账号:super-admin 密码随便填</div>
@@ -63,6 +64,9 @@ import { useStore } from 'vuex'
 import { validatorPassWord } from './rules'
 import { setItem } from '@/utils/storeage'
 import { USERNAME } from '@/constant/index'
+import langSelect from '@/components/LangSelect'
+import { useI18n } from 'vue-i18n'
+const i18n = useI18n()
 const loginFrom = ref({
   username: 'admin',
   password: '123456'
@@ -71,7 +75,7 @@ const loginRules = ref({
   username: [
     {
       required: true,
-      message: '请输入用户名',
+      message: i18n.t('login.usernameRule'),
       trigger: 'blur'
     }
   ],
@@ -109,7 +113,6 @@ const loginChange = () => {
         setItem(USERNAME, loginFrom.value.username)
       })
   })
-  // store.dispatch('user/getUserInfo')
 }
 </script>
 <style lang="scss" scoped>
@@ -139,8 +142,17 @@ $cursor: #fff;
       font-size: 26px;
       color: $light_gray;
       margin: 0px auto 40px auto;
-      text-align: center;
       font-weight: bold;
+      ::v-deep .langSelect {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        background-color: #fff;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     }
 
     ::v-deep .el-form-item {

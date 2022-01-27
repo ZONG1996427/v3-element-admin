@@ -6,7 +6,8 @@ const getters = {
   menuList: state => state.user.sidebarMenu,
   cssVar: state => variables,
   sidebarOpened: state => state.app.sidebarOpened,
-  language: state => state.app.language
+  language: state => state.app.language,
+  isCurrentColor: state => state.theme.isCurrentColor
 }
 
 export default getters

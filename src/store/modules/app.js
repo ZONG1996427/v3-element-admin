@@ -2,7 +2,7 @@ import { LANG } from '@/constant'
 import { getItem, setItem } from '@/utils/storeage'
 const state = () => ({
   sidebarOpened: true,
-  language: getItem(LANG) || 'zh'
+  language: getItem(LANG) || 'zh'// 从缓存中取当前语言类型
 })
 const mutations = {
   triggerSidebarOpened(state) {
@@ -11,7 +11,7 @@ const mutations = {
   // 设置国际化
   setLanguage(state, lang) {
     // 存储local，防止页面刷新失效
-    setItem(LANG, lang)
+    setItem(LANG, lang) // 设置当前语言类型
     state.language = lang
   }
 }

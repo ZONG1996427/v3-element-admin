@@ -12,7 +12,7 @@ const messages = {
   }
 }
 
-// var locale = 'en'
+// 取出来当前语言类型并赋值，这样就可以即使刷新页面也可以保留当前页面语言类型了
 function getLanguage() {
   return store && store.getters && store.getters.language
 }

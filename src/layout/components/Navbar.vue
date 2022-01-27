@@ -3,6 +3,7 @@
     <Hamburger class="Hamburger" />
     <Breadcrumb class="breadcrumb" />
     <div class="right-menu">
+      <theme-select class="theme-select"></theme-select>
       <lang-select class="right-menu-item hover-effect" />
       <el-dropdown trigger="click" class="avatar-container">
         <div class="avatar-wrapper">
@@ -30,6 +31,7 @@ import { useStore } from 'vuex'
 import Hamburger from './hamburger.vue'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
+import ThemeSelect from '@/components/ThemeSelect'
 const store = useStore()
 // 退出
 const logout = () => {
@@ -54,6 +56,17 @@ const logout = () => {
     }
   }
   .right-menu {
+    ::v-deep .theme-select {
+      margin-right: 15px;
+      font-size: 20px;
+      background-color: #fff;
+      padding-top: 4px;
+      border: none;
+      &:active {
+        border: none !important;
+        outline: 0 !important;
+      }
+    }
     ::v-deep .right-menu-item {
       display: inline-block;
       padding: 0 18px 0 0;

@@ -39,7 +39,6 @@ defineProps({
   }
 })
 const language = computed(() => store.getters.language)
-console.log(language)
 const handleSetLanguage = (lang) => {
   i18n.locale.value = lang
   store.commit('app/setLanguage', lang)

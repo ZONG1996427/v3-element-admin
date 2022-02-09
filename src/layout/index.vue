@@ -6,7 +6,7 @@
     <!-- sidebar区域 -->
     <div
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     >
       <Sidebar></Sidebar>
     </div>
@@ -26,18 +26,19 @@ import {} from 'vue'
 import Sidebar from './components/Sidebar/index'
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
-import variables from '@/styles/variables.scss'
 </script>
 
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
 @import '~@/styles/variables.scss';
+
 .app-wrapper {
   @include clearfix;
   width: 100%;
   height: 100%;
   position: relative;
 }
+
 .fixed-header {
   position: fixed;
   top: 0;
@@ -46,6 +47,7 @@ import variables from '@/styles/variables.scss'
   width: calc(100% - #{$sideBarWidth});
   transition: width #{$sideBarDuration};
 }
+
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hiddensideBarWidth});
 }

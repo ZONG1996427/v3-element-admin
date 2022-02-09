@@ -16,7 +16,7 @@
           <svg-icon icon="user"></svg-icon>
         </span>
         <el-input
-          placeholder="用户名"
+          :placeholder="$t('login.userPlaceholder')"
           name="name"
           type="text"
           v-model="loginFrom.username"
@@ -48,7 +48,7 @@
         type="primary"
         :loading="loginLoading"
         style="width: 100%; margin-bottom: 30px"
-        >{{ $t('login.loginBtn') }}
+      >{{ $t('login.loginBtn') }}
       </el-button>
       <span style="color: #ffffff">
         <div>超级管理员账号:super-admin 密码随便填</div>
@@ -66,6 +66,7 @@ import { setItem } from '@/utils/storeage'
 import { USERNAME } from '@/constant/index'
 import langSelect from '@/components/LangSelect'
 import { useI18n } from 'vue-i18n'
+
 const i18n = useI18n()
 const loginFrom = ref({
   username: 'admin',
@@ -143,6 +144,7 @@ $cursor: #fff;
       color: $light_gray;
       margin: 0px auto 40px auto;
       font-weight: bold;
+
       ::v-deep .langSelect {
         position: absolute;
         top: 10px;

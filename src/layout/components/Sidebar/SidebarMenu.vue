@@ -17,6 +17,7 @@ import { useStore } from 'vuex'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import SubMenu from './SubMenu.vue'
+
 const store = useStore()
 const menuList = computed(() => {
   return store.getters.menuList

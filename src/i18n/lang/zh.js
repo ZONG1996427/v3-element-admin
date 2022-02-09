@@ -3,7 +3,8 @@ export default {
     title: '用户登录',
     loginBtn: '登录',
     usernameRule: '用户名为必填项',
-    passwordRule: '密码不能少于6位'
+    passwordRule: '密码不能少于6位',
+    userPlaceholder: '用户名'
   },
   route: {
     profile: '个人中心',
@@ -22,5 +23,8 @@ export default {
     test: 'super测试页',
     orderManage: '商品管理',
     orderList: '商品列表'
+  },
+  toast: {
+    switchLangSuccess: '切换成功'
   }
 }

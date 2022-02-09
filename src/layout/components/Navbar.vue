@@ -32,6 +32,7 @@ import Hamburger from './hamburger.vue'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
+
 const store = useStore()
 // 退出
 const logout = () => {
@@ -45,32 +46,37 @@ const logout = () => {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+
   .Hamburger {
     float: left;
     height: 100%;
     line-height: 54px;
     transition: background 0.5s;
+
     &:hover {
       cursor: pointer;
       background: rgba(0, 0, 0, 0.1);
     }
   }
+
   .right-menu {
     ::v-deep .theme-select {
-      margin-right: 15px;
-      font-size: 20px;
+      margin-right: 20px;
+      font-size: 24px;
       background-color: #fff;
       padding-top: 4px;
       border: none;
+
       &:active {
         border: none !important;
         outline: 0 !important;
       }
     }
+
     ::v-deep .right-menu-item {
       display: inline-block;
-      padding: 0 18px 0 0;
-      font-size: 24px;
+      padding: 0 20px 0 0;
+      font-size: 28px;
       color: #5a5e66;
       vertical-align: text-bottom;
 
@@ -78,21 +84,26 @@ const logout = () => {
         cursor: pointer;
       }
     }
+
     display: flex;
     align-items: center;
     float: right;
     // flex-direction: row-reverse;
     padding-right: 16px;
+
     .avatar-container {
       margin-right: 20px;
+
       .avatar-wrapper {
         margin-top: 6px;
+
         ::v-deep .el-icon-s-tools {
           margin-left: 15px;
         }
       }
     }
   }
+
   .breadcrumb {
     float: left;
   }

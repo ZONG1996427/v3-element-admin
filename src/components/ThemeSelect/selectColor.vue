@@ -25,6 +25,8 @@
 // 如果父组件是v-model:title='变量名' 那么子组件先在defineProps里面接收，然后再去使用
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+
 defineProps({
   modelValue: {
     type: Boolean
@@ -55,7 +57,11 @@ const closed = () => {
 }
 
 // 确认事件
-const comfirm = () => {
+const comfirm = async () => {
+  // 1.1 获取主题色
+  const newStyleText = await generateNewStyle(mColor.value)
+  // 1.2 写入最新主题色
+  writeNewStyle(newStyleText)
   closed()
   // 传入当前选中的color
   store.commit('theme/SET_CURRENT_COLOR', mColor.value)
@@ -64,6 +70,7 @@ const comfirm = () => {
 <style lang='scss' scoped>
 .center {
   text-align: center;
+
   .title {
     padding: 10px 0;
   }

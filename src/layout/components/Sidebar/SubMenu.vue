@@ -1,6 +1,9 @@
 <template>
   <template v-for="(item, index) in menuList" :key="index">
-    <el-submenu :index="item.path" v-if="item.children && item.children.length">
+    <el-sub-menu
+      :index="item.path"
+      v-if="item.children && item.children.length"
+    >
       <template #title>
         <i
           class="svg-icon"
@@ -13,7 +16,7 @@
       </template>
       <!-- 循环渲染 -->
       <Sub-Menu :menuList="item.children"></Sub-Menu>
-    </el-submenu>
+    </el-sub-menu>
     <el-menu-item v-else :index="item.path">
       <!-- el-menu-item里面直接写显示在页面的元素就行，不要再嵌套，否则会出现如下情况，菜单只有一级，在收缩的时候不显示icon -->
       <i

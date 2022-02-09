@@ -3,7 +3,8 @@ export default {
     title: 'User Login',
     loginBtn: 'Login',
     usernameRule: 'Username is required',
-    passwordRule: 'Password cannot be less than 6 digits'
+    passwordRule: 'Password cannot be less than 6 digits',
+    userPlaceholder: 'user name'
   },
   route: {
     profile: 'Profile',

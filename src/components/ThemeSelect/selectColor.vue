@@ -58,9 +58,9 @@ const closed = () => {
 
 // 确认事件
 const comfirm = async () => {
-  // 1.1 获取主题色
+  // 1.1 获取主题色,获取最新的样式表
   const newStyleText = await generateNewStyle(mColor.value)
-  // 1.2 写入最新主题色
+  // 1.2 写入最新主题色，通过document.head.append写入最新的样式，进行覆盖
   writeNewStyle(newStyleText)
   closed()
   // 传入当前选中的color

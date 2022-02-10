@@ -3,7 +3,9 @@
     <Hamburger class="Hamburger" />
     <Breadcrumb class="breadcrumb" />
     <div class="right-menu">
-      <theme-select class="theme-select"></theme-select>
+      <header-search class="theme-select" />
+      <screenfull class="theme-select" />
+      <theme-select class="theme-select" />
       <lang-select class="right-menu-item hover-effect" />
       <el-dropdown trigger="click" class="avatar-container">
         <div class="avatar-wrapper">
@@ -32,6 +34,8 @@ import Hamburger from './hamburger.vue'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
+import screenfull from '@/components/Screenfull'
+import headerSearch from '@/components/Headersearch'
 
 const store = useStore()
 // 退出

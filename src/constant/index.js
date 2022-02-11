@@ -8,4 +8,4 @@ export const LANG = 'language'
 // 选中主题颜色
 export const SELECT_COLOR = 'selectColor'
 // 默认主题颜色
-export const DEFAULT_COLOR = '#a9dc76'
+export const DEFAULT_COLOR = '#409eff'

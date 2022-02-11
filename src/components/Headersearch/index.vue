@@ -11,15 +11,18 @@
       v-model="searchVal"
       filterable
       remote
-      reserve-keyword
       placeholder="Please content"
       :remote-method="remoteMethod"
       default-first-option
+      @change="headerSearchChange"
+      :loading="loading"
+      clearable
+      @clear="optionsClear"
     >
       <el-option
-        v-for="item in route.getRoutes()"
+        v-for="item in searchShowRoutesList"
         :key="item.path"
-        :label="item.meta.name"
+        :label="item.meta.handerSearchLabel.join(' > ')"
         :value="item.path"
       >
       </el-option>
@@ -27,20 +30,69 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 const route = useRouter()
-console.log(route.getRoutes())
-const isShow = ref(false)
-const searchVal = ref('')
-// const optionsList = ref([])
+const store = useStore()
+const isShow = ref(false) // 控制显示
+const loading = ref(false) //
+const searchVal = ref('') // 搜索参数
+const showRoutesList = ref([]) // 原列表数据
+const searchShowRoutesList = ref([]) // 搜索列表数据
+onMounted(() => {
+  // 递归过滤
+  ;(function filterRoute(routes = []) {
+    const showRoutes = []
+    routes.forEach((item) => {
+      if (item.meta.icon) {
+        if (item.children && item.children.length > 0) {
+          item.children = filterRoute(item.children)
+        }
+        if (item.meta.handerSearchLabel) {
+          showRoutesList.value.push(item)
+        }
+        showRoutes.push(item)
+      }
+    })
+    return showRoutes
+  })(store.getters.menuList)
+  searchShowRoutesList.value = JSON.parse(JSON.stringify(showRoutesList.value))
+})
+// 展开/收缩下拉框
 const showSearchToggle = () => {
-  console.log('show search')
   isShow.value = !isShow.value
 }
-const remoteMethod = () => {
-  console.log('remote method')
+// 远程搜索
+const remoteMethod = (val) => {
+  loading.value = true
+  searchShowRoutesList.value = showRoutesList.value.filter((item) => {
+    return item.meta.name.includes(val) && item
+  })
+  loading.value = false
 }
+// 清除事件
+const optionsClear = () => {
+  searchShowRoutesList.value = JSON.parse(JSON.stringify(showRoutesList.value))
+}
+// 下拉框点击
+const headerSearchChange = (val) => {
+  route.push(val)
+}
+// 当点击其他区域关闭搜索，并清空输入框参数，复原下拉框数据
+const onClose = () => {
+  isShow.value = false
+  searchVal.value = ''
+  searchShowRoutesList.value = JSON.parse(JSON.stringify(showRoutesList.value))
+}
+// 监听isShow，点击事件
+watch(isShow, (val) => {
+  if (val) {
+    document.body.addEventListener('click', onClose)
+  } else {
+    document.body.removeEventListener('click', onClose)
+  }
+})
 </script>
 <style lang='scss' scoped>
 .header-search {

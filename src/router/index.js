@@ -20,7 +20,8 @@ export const commonRouters = [
         meta: {
           title: 'profile',
           icon: 'el-icon-user',
-          name: '用户中心'
+          name: '用户中心',
+          handerSearchLabel: ['用户中心']
         }
       }
     ]

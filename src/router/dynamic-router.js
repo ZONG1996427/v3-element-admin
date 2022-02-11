@@ -18,7 +18,8 @@ const privateRoutes = [
         meta: {
           title: 'userManage',
           icon: 'personnel-manage',
-          name: '用户列表'
+          name: '用户列表',
+          handerSearchLabel: ['用户管理', '用户列表']
         }
       },
       {
@@ -27,7 +28,8 @@ const privateRoutes = [
         meta: {
           title: 'roleList',
           icon: 'role',
-          name: '角色列表'
+          name: '角色列表',
+          handerSearchLabel: ['用户管理', '角色列表']
         }
       },
       {
@@ -36,7 +38,8 @@ const privateRoutes = [
         meta: {
           title: 'permissionList',
           icon: 'permission',
-          name: '权限列表'
+          name: '权限列表',
+          handerSearchLabel: ['用户管理', '权限列表']
         }
       },
       {
@@ -76,7 +79,8 @@ const privateRoutes = [
         meta: {
           title: 'articleRanking',
           icon: 'article-ranking',
-          name: '文章排名'
+          name: '文章排名',
+          handerSearchLabel: ['文章管理', '文章排名']
         }
       },
       {
@@ -93,7 +97,8 @@ const privateRoutes = [
         meta: {
           title: 'articleCreate',
           icon: 'article-create',
-          name: '创建文章'
+          name: '创建文章',
+          handerSearchLabel: ['文章管理', '创建文章']
         }
       },
       {
@@ -124,7 +129,8 @@ const privateRoutes = [
         meta: {
           title: 'test',
           icon: 'el-icon-s-platform',
-          name: 'super测试页'
+          name: 'super测试页',
+          handerSearchLabel: ['超级管理', 'super测试页']
         }
       },
       {
@@ -145,7 +151,8 @@ const privateRoutes = [
             meta: {
               title: 'orderList',
               icon: 'el-icon-s-cooperation',
-              name: '商品列表'
+              name: '商品列表',
+              handerSearchLabel: ['超级管理', '商品管理', '商品列表']
             }
           }
         ]

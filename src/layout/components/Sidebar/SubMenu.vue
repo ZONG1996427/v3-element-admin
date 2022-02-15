@@ -35,7 +35,7 @@
 </template>
 <script setup>
 import { defineProps } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { generateTitle } from '@/utils/i18n'
 defineProps({
   menuList: {
     type: Array,
@@ -44,11 +44,6 @@ defineProps({
     }
   }
 })
-const i18n = useI18n()
-// 切换菜单栏中英文
-const generateTitle = (title) => {
-  return i18n.t('route' + '.' + title)
-}
 </script>
 <style lang='scss' scoped>
 </style>

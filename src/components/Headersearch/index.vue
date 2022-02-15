@@ -36,7 +36,7 @@ import { useStore } from 'vuex'
 const route = useRouter()
 const store = useStore()
 const isShow = ref(false) // 控制显示
-const loading = ref(false) //
+const loading = ref(false) // 下拉框loading状态
 const searchVal = ref('') // 搜索参数
 const showRoutesList = ref([]) // 原列表数据
 const searchShowRoutesList = ref([]) // 搜索列表数据

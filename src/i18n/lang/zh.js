@@ -7,7 +7,7 @@ export default {
     userPlaceholder: '用户名'
   },
   route: {
-    profile: '个人中心',
+    profile: '用户中心',
     user: '用户管理',
     excelImport: 'Excel导入',
     userManage: '用户列表',
@@ -22,7 +22,11 @@ export default {
     superView: '超级管理',
     test: 'super测试页',
     orderManage: '商品管理',
-    orderList: '商品列表'
+    orderList: '商品列表',
+    test1: '测试1',
+    test2: '测试2',
+    test3: '测试3',
+    test4: '测试4'
   },
   toast: {
     switchLangSuccess: '切换成功'

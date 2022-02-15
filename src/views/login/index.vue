@@ -48,11 +48,11 @@
         type="primary"
         :loading="loginLoading"
         style="width: 100%; margin-bottom: 30px"
-      >{{ $t('login.loginBtn') }}
+        >{{ $t('login.loginBtn') }}
       </el-button>
       <span style="color: #ffffff">
         <div>超级管理员账号:super-admin 密码随便填</div>
-        <div style="margin-top: 20px">未充钱账号:admin 密码随便填</div>
+        <div style="margin-top: 20px">普通账号:admin 密码随便填</div>
       </span>
     </el-form>
   </div>
@@ -69,7 +69,7 @@ import { useI18n } from 'vue-i18n'
 
 const i18n = useI18n()
 const loginFrom = ref({
-  username: 'admin',
+  username: 'super-admin',
   password: '123456'
 })
 const loginRules = ref({

@@ -13,6 +13,7 @@
     <div class="main-container">
       <div class="fixed-header">
         <Navbar />
+        <tagView />
       </div>
       <AppMain></AppMain>
     </div>
@@ -26,6 +27,7 @@ import {} from 'vue'
 import Sidebar from './components/Sidebar/index'
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
+import tagView from '@/components/tagView'
 </script>
 
 <style lang="scss" scoped>

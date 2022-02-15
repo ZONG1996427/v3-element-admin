@@ -5,7 +5,7 @@ import installElementPlus from './plugins/element'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import 'nprogress/nprogress.css' // nprogress样式
 // 导入 svgIcon
 import installIcons from '@/icons'
 // 导入全局样式

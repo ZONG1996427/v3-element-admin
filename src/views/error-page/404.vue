@@ -41,7 +41,15 @@
           Please check that the URL you entered is correct, or click the button
           below to return to the homepage.
         </div>
-        <a href="" class="bullshit__return-home">Back to home</a>
+        <span
+          @click="
+            () => {
+              $router.push('/')
+            }
+          "
+          class="bullshit__return-home"
+          >Back to home</span
+        >
       </div>
     </div>
   </div>

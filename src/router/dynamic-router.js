@@ -158,6 +158,176 @@ const privateRoutes = [
         ]
       }
     ]
+  },
+  {
+    path: '/test1',
+    component: layout,
+    redirect: '/test1/manage',
+    name: 'test1',
+    meta: {
+      title: 'test1',
+      icon: 'personnel',
+      name: '测试管理1'
+    },
+    children: [
+      {
+        path: '/test1/manage',
+        component: () => import('@/views/user-manage/index'),
+        meta: {
+          title: 'userManage',
+          icon: 'personnel-manage',
+          name: '测试列表',
+          handerSearchLabel: ['测试管理1', '测试列表']
+        }
+      },
+      {
+        path: '/test1/role',
+        component: () => import('@/views/role-list/index'),
+        meta: {
+          title: 'roleList',
+          icon: 'role',
+          name: '角色列表',
+          handerSearchLabel: ['测试管理1', '角色列表']
+        }
+      },
+      {
+        path: '/test1/permission',
+        component: () => import('@/views/permission-list/index'),
+        meta: {
+          title: 'permissionList',
+          icon: 'permission',
+          name: '权限列表',
+          handerSearchLabel: ['测试管理1', '权限列表']
+        }
+      }
+    ]
+  },
+  {
+    path: '/test2',
+    component: layout,
+    name: 'test2',
+    redirect: '/test2/ranking',
+    meta: {
+      title: 'test2',
+      icon: 'article',
+      name: '测试管理2'
+    },
+    children: [
+      {
+        path: '/test2/ranking',
+        component: () => import('@/views/article-ranking/index'),
+        meta: {
+          title: 'articleRanking',
+          icon: 'article-ranking',
+          name: '文章排名',
+          handerSearchLabel: ['文章管理', '文章排名']
+        }
+      },
+      {
+        path: '/test2/detail',
+        component: () => import('@/views/article-detail/index'),
+        meta: {
+          title: 'articleDetail',
+          name: '文章详情'
+        }
+      },
+      {
+        path: '/test2/create',
+        component: () => import('@/views/article-create/index'),
+        meta: {
+          title: 'articleCreate',
+          icon: 'article-create',
+          name: '创建文章',
+          handerSearchLabel: ['文章管理', '创建文章']
+        }
+      }
+    ]
+  },
+  {
+    path: '/test3',
+    component: layout,
+    redirect: '/test3/manage',
+    name: 'test3',
+    meta: {
+      title: 'test3',
+      icon: 'personnel',
+      name: '测试管理3'
+    },
+    children: [
+      {
+        path: '/test3/manage',
+        component: () => import('@/views/user-manage/index'),
+        meta: {
+          title: 'userManage',
+          icon: 'personnel-manage',
+          name: '测试列表',
+          handerSearchLabel: ['测试管理1', '测试列表']
+        }
+      },
+      {
+        path: '/test3/role',
+        component: () => import('@/views/role-list/index'),
+        meta: {
+          title: 'roleList',
+          icon: 'role',
+          name: '角色列表',
+          handerSearchLabel: ['测试管理1', '角色列表']
+        }
+      },
+      {
+        path: '/test3/permission',
+        component: () => import('@/views/permission-list/index'),
+        meta: {
+          title: 'permissionList',
+          icon: 'permission',
+          name: '权限列表',
+          handerSearchLabel: ['测试管理1', '权限列表']
+        }
+      }
+    ]
+  },
+  {
+    path: '/test4',
+    component: layout,
+    redirect: '/test4/manage',
+    name: 'test4',
+    meta: {
+      title: 'test4',
+      icon: 'personnel',
+      name: '测试管理4'
+    },
+    children: [
+      {
+        path: '/test4/manage',
+        component: () => import('@/views/user-manage/index'),
+        meta: {
+          title: 'userManage',
+          icon: 'personnel-manage',
+          name: '测试列表',
+          handerSearchLabel: ['测试管理1', '测试列表']
+        }
+      },
+      {
+        path: '/test4/role',
+        component: () => import('@/views/role-list/index'),
+        meta: {
+          title: 'roleList',
+          icon: 'role',
+          name: '角色列表',
+          handerSearchLabel: ['测试管理1', '角色列表']
+        }
+      },
+      {
+        path: '/test4/permission',
+        component: () => import('@/views/permission-list/index'),
+        meta: {
+          title: 'permissionList',
+          icon: 'permission',
+          name: '权限列表',
+          handerSearchLabel: ['测试管理1', '权限列表']
+        }
+      }
+    ]
   }
 ]
 export {

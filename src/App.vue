@@ -5,9 +5,8 @@
 <script setup>
 import { useStore } from 'vuex'
 import { generateNewStyle, writeNewStyle } from '@/utils/theme'
-
 const store = useStore()
-generateNewStyle(store.getters.isCurrentColor).then(newStyleText => {
+generateNewStyle(store.getters.isCurrentColor).then((newStyleText) => {
   writeNewStyle(newStyleText)
 })
 </script>

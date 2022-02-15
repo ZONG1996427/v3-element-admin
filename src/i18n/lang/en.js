@@ -22,7 +22,11 @@ export default {
     superView: 'superView',
     test: 'testView',
     orderManage: 'orderManage',
-    orderList: 'orderList'
+    orderList: 'orderList',
+    test1: 'test1',
+    test2: 'test2',
+    test3: 'test3',
+    test4: 'test4'
   },
   toast: {
     switchLangSuccess: 'Switch Language Success'

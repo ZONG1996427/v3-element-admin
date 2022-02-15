@@ -1,10 +1,13 @@
 // 权限文件
 import router from '@/router'
 import store from '@/store'
+import NProgress from 'nprogress' // nprogress插件
+
 // 设置白名单
 const whileList = ['/login']
 // 定义前置守卫
 router.beforeEach(async (to, from, next) => {
+  NProgress.start()
   // 1-有token，不允许访问login，去主页面或者随意访问
   if (store.getters.token) {
     // 用户已登录
@@ -29,4 +32,7 @@ router.beforeEach(async (to, from, next) => {
       next('/login')
     }
   }
+})
+router.afterEach(() => {
+  NProgress.done()
 })

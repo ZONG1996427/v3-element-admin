@@ -74,7 +74,7 @@ const tagViewChangeWatch = (item) => {
 }
 // 删除tag标签，并修改缓存
 const onCloseClick = (item, index) => {
-  store.commit('tagView/deleteTagView', index)
+  store.commit('tagView/DELETE_TAG_VIEW', index)
   // 删除当前的，跳转到前一个页面
   if (item.path === store.getters.currentRoute) {
     router.push(store.getters.tagViewList[index - 1].path)

@@ -14,7 +14,7 @@ const icon = computed(() => {
 // 切换图标
 const toggleClick = () => {
   // 直接调用aop modules里面的方法
-  store.commit('app/triggerSidebarOpened')
+  store.commit('app/TRIGGER_SIDEBAR_OPENED')
 }
 </script>
 <style lang='scss' scoped>

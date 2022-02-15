@@ -41,7 +41,7 @@ defineProps({
 const language = computed(() => store.getters.language)
 const handleSetLanguage = (lang) => {
   i18n.locale.value = lang
-  store.commit('app/setLanguage', lang)
+  store.commit('app/SET_LANGUAGE', lang)
   ElMessage.success(i18n.t('toast.switchLangSuccess'))
 }
 </script>

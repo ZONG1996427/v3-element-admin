@@ -18,7 +18,7 @@ watch(
     if (!isTag(to.path)) return
     // 调用tagView模块的方法,并且传入一些我们需要的参数
     const { path, name, meta, fullPath, params, query } = to
-    store.commit('tagView/addTagViewList', {
+    store.commit('tagView/ADD_TAG_VIEW_LIST', {
       path,
       name,
       meta,

@@ -6,7 +6,7 @@ const state = () => ({
 })
 const mutations = {
   // 添加标签
-  addTagViewList(state, tag) {
+  ADD_TAG_VIEW_LIST(state, tag) {
     // 记录当前点击的路由
     state.currentRoute = tag.fullPath
     // 判断重复
@@ -21,7 +21,7 @@ const mutations = {
     }
   },
   // 删除标签
-  deleteTagView(state, index) {
+  DELETE_TAG_VIEW(state, index) {
     state.tagViewList.splice(index, 1)
     setItem(TAG_VIEW, state.tagViewList)
   }

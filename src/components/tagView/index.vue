@@ -55,12 +55,16 @@ const checkRouteClick = (item) => {
   router.push(item.path)
 }
 /**
- * tag标签变化，移动标签
+ * @name: tagViewChangeWatch
+ * @msg: tag标签变化，移动标签
+ * @param {*} item 当前点击的路由
  */
 const tagViewChangeWatch = (item) => {
   nextTick(() => {
-    console.log(tags.value)
-    console.log(store.getters.tagViewList)
+    // 删除之后获取的el会出现null，先暂时过滤一下，后面在康康
+    tags.value = tags.value.filter((x) => {
+      return x
+    })
     for (const tag of tags.value) {
       if (tag.to.path === item.path) {
         scrollPanes.value.moveToTarget(tag, tags.value)

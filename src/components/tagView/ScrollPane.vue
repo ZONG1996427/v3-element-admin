@@ -47,13 +47,17 @@ export default {
     // emitScroll() {
     //   this.$emit('scroll')
     // },
+
     /**
-     * api定义:
+     * @name: moveToTarget
+     * @msg: 标签移动核心代码,其他可以不用
+     *  api定义:
      * scrollLeft:属性设置或返回元素内容向左滚动(水平方向)的像素数。当前可视窗口距离距离左侧某元素的距离
      * offsetWidth:获取元素的宽度，包含内边距（padding）和边框（border）。
      * scrollWidth：获取元素的宽度，包含内边距（padding）
+     * @param {*}
+     * @return {*}
      */
-    // 标签移动核心代码,其他可以不用
     moveToTarget(currentTag, parentTagList) {
       const $container = this.$refs.scrollContainer.$el // 标签容器
       const $containerWidth = $container.offsetWidth // tag元素当前可视的宽度

@@ -53,6 +53,9 @@
       <span style="color: #ffffff">
         <div>超级管理员账号:super-admin 密码随便填</div>
         <div style="margin-top: 20px">普通账号:admin 密码随便填</div>
+        <div style="margin-top: 20px">
+          tag-view账号:tag-view-admin 密码随便填
+        </div>
       </span>
     </el-form>
   </div>

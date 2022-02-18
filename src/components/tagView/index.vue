@@ -11,6 +11,7 @@
         }"
         :class="isActive(item) && $store.getters.currentRoute ? 'active' : ''"
         @click="checkRouteClick(item)"
+        @contextmenu.prevent="contextmenuClick($event, index, item)"
         :style="{
           backgroundColor:
             isActive(item) && $store.getters.currentRoute
@@ -28,6 +29,19 @@
       </router-link>
     </scroll-pane>
   </div>
+  <ul class="context-menu" v-show="closeMenuVisibility" :style="closeMenu">
+    <li @click="refresh">{{ $t('tagView.refresh') }}</li>
+    <li
+      @click="closeCurrent"
+      v-show="
+        Object.keys(closeSelectItem).length && !closeSelectItem.meta.affix
+      "
+    >
+      {{ $t('tagView.closeCurrent') }}
+    </li>
+    <li @click="closeAll">{{ $t('tagView.closeAll') }}</li>
+    <li @click="closeOther">{{ $t('tagView.closeOther') }}</li>
+  </ul>
 </template>
 
 <script setup>
@@ -43,6 +57,10 @@ const router = useRouter()
 const store = useStore()
 const scrollPanes = ref(null)
 const tags = ref([])
+const closeMenuVisibility = ref(false)
+const closeSelectIndex = ref(0) // 关闭选中的下标
+const closeSelectItem = ref({}) // 关闭选中的页面
+
 watch(route, () => {
   tagViewChangeWatch(route)
 })
@@ -80,10 +98,54 @@ const onCloseClick = (item, index) => {
     router.push(store.getters.tagViewList[index - 1].path)
   }
 }
-// const closeMenu = () => {}
-// const handleScroll = () => {
-//   closeMenu()
-// }
+const closeMenu = ref({
+  left: 0,
+  top: 0
+})
+// 右键点击关闭，获取页面位置，显示关闭系列按钮
+const contextmenuClick = (e, index, item) => {
+  // 获取右键点击处距离页面top，left的距离
+  const { x, y } = e
+  closeMenu.value.left = x + 'px'
+  closeMenu.value.top = y + 'px'
+  closeMenuVisibility.value = true
+  closeSelectIndex.value = index
+  closeSelectItem.value = item
+}
+// 刷新
+const refresh = () => {
+  router.go(0)
+}
+// 关闭当前
+const closeCurrent = () => {
+  store.commit('tagView/DELETE_TAG_VIEW', closeSelectIndex.value)
+  // 删除当前的，跳转到前一个页面
+  if (route.path === store.getters.currentRoute) {
+    router.push(store.getters.tagViewList[closeSelectIndex.value - 1].path)
+  }
+}
+// 关闭所有,除了个人中心
+const closeAll = () => {
+  store.commit('tagView/DELETE_ALL_TAG')
+  router.push('/profile')
+}
+// 关闭其他，只保留当前跟不可删除页面
+const closeOther = () => {
+  store.commit('tagView/DELETE_OTHER_TAG', closeSelectItem.value)
+  router.push(closeSelectItem.value.path)
+}
+// 关闭 menu
+const closeWatch = () => {
+  closeMenuVisibility.value = false
+}
+// 监听变化
+watch(closeMenuVisibility, (val) => {
+  if (val) {
+    document.body.addEventListener('click', closeWatch)
+  } else {
+    document.body.removeEventListener('click', closeWatch)
+  }
+})
 </script>
 <style lang='scss' scoped>
 .tags-view-container {
@@ -143,6 +205,26 @@ const onCloseClick = (item, index) => {
         background-color: #b4bccc;
         color: #fff;
       }
+    }
+  }
+}
+.context-menu {
+  position: fixed;
+  background: #fff;
+  z-index: 3000;
+  list-style-type: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+  li {
+    margin: 0;
+    padding: 7px 16px;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
   }
 }

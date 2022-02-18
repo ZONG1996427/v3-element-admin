@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-02-11 14:09:20
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-18 11:34:19
+ */
 import { TAG_VIEW } from '@/constant'
 import { getItem, setItem } from '@/utils/storeage'
 const state = () => ({
@@ -23,6 +31,18 @@ const mutations = {
   // 删除标签
   DELETE_TAG_VIEW(state, index) {
     state.tagViewList.splice(index, 1)
+    setItem(TAG_VIEW, state.tagViewList)
+  },
+  // 删除全部,不删除个人中心，此业务根据个人需要改就行
+  DELETE_ALL_TAG(state) {
+    state.tagViewList.splice(1, state.tagViewList.length - 1)
+    setItem(TAG_VIEW, state.tagViewList)
+  },
+  // 关闭其他，只保留当前跟不可删除页面
+  DELETE_OTHER_TAG(state, item) {
+    state.tagViewList = state.tagViewList.filter(x => {
+      return x.meta.affix || x.path === item.path
+    })
     setItem(TAG_VIEW, state.tagViewList)
   }
 }

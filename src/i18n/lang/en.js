@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 国际化英文
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-27 11:32:13
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-18 10:46:46
+ */
 export default {
   login: {
     title: 'User Login',
@@ -27,6 +35,12 @@ export default {
     test2: 'test2',
     test3: 'test3',
     test4: 'test4'
+  },
+  tagView: {
+    refresh: 'refresh',
+    closeCurrent: 'closeCurrent',
+    closeAll: 'closeAll',
+    closeOther: 'closeOther'
   },
   toast: {
     switchLangSuccess: 'Switch Language Success'

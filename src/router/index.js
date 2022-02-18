@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-02-08 15:32:38
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-18 11:27:14
+ */
 import { createRouter, createWebHashHistory } from 'vue-router'
 // 将layout抽出来，多个复用
 import layout from '@/layout/index'
@@ -21,7 +29,8 @@ export const commonRouters = [
           title: 'profile',
           icon: 'el-icon-user',
           name: '用户中心',
-          handerSearchLabel: ['用户中心']
+          handerSearchLabel: ['用户中心'],
+          affix: true
         }
       }
     ]

@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 国际化中文
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-27 11:32:09
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-18 10:46:39
+ */
 export default {
   login: {
     title: '用户登录',
@@ -27,6 +35,12 @@ export default {
     test2: '测试2',
     test3: '测试3',
     test4: '测试4'
+  },
+  tagView: {
+    refresh: '刷新',
+    closeCurrent: '关闭当前',
+    closeAll: '关闭所有',
+    closeOther: '关闭其他'
   },
   toast: {
     switchLangSuccess: '切换成功'

@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-19 16:47:14
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-18 16:25:16
+ */
 // 导入path模块
 const path = require('path')
 
@@ -6,6 +14,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  publicPath: './',
   // 添加proxy代理
   devServer: {
     // 转发地址

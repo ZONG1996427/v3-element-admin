@@ -8,7 +8,7 @@
   >
     <div>
       <el-tooltip content="换肤">
-        <svg-icon icon="change-theme"></svg-icon
+        <svg-icon id="guide-theme" icon="change-theme"></svg-icon
       ></el-tooltip>
     </div>
     <template #dropdown>

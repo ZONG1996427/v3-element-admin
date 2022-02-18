@@ -1,14 +1,12 @@
-<!--
- * @Descripttion: msg
- * @version: 1.0
- * @Author: 宗
- * @Date: 2022-01-21 14:19:04
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-18 11:30:52
--->
 <template>
   <div class="app-main">
-    <router-view></router-view>
+    <router-view v-slot="{ Component, route }">
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive>
+          <component :is="Component" :key="route.path" />
+        </keep-alive>
+      </transition>
+    </router-view>
   </div>
 </template>
 <script setup>

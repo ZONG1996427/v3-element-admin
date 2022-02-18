@@ -82,7 +82,7 @@ const mutations = {
   // 退出时清除当前用户路由
   CLEAR_ALL_ROUTERS(state) {
     state.addRoutresList.forEach(item => {
-      router.removeRoute(item.name)
+      router.removeRoute(item)
     })
   },
   // 设置siderbar菜单

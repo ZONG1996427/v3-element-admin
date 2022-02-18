@@ -1,10 +1,11 @@
 <template>
   <div class="navbar">
     <Hamburger class="Hamburger" />
-    <Breadcrumb class="breadcrumb" />
+    <Breadcrumb id="guide-breadcrumb" class="breadcrumb" />
     <div class="right-menu">
-      <header-search class="theme-select" />
-      <screenfull class="theme-select" />
+      <Guidance class="theme-select" />
+      <header-search id="guide-search" class="theme-select" />
+      <screenfull id="guide-full" class="theme-select" />
       <theme-select class="theme-select" />
       <lang-select class="right-menu-item hover-effect" />
       <el-dropdown trigger="click" class="avatar-container">
@@ -36,6 +37,7 @@ import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
 import screenfull from '@/components/Screenfull'
 import headerSearch from '@/components/Headersearch'
+import Guidance from '@/components/Guidance'
 
 const store = useStore()
 // 退出

@@ -5,6 +5,7 @@
   >
     <!-- sidebar区域 -->
     <div
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     >
@@ -17,8 +18,6 @@
       </div>
       <AppMain></AppMain>
     </div>
-    <!-- navbar区域 -->
-    <!-- main区域 -->
   </div>
 </template>
 

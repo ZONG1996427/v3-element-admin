@@ -15,6 +15,7 @@ const actions = {
   // 登录请求
   login({ commit }, userInfo) {
     const { username, password } = userInfo
+    console.log(1)
     return new Promise((resolve, reject) => {
       vlogin({ username: username.trim(), password: password }).then(response => {
         const { data } = response

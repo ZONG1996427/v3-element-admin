@@ -1,10 +1,12 @@
-import { getUserInfo, vlogin } from '@/api/user'
+import { getUserInfo } from '@/api/user'
 // import md5 from 'md5'
 import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
 import router, { commonRouters } from '@/router'
+// import { setTime } from '@/utils/auth'
 import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
+import axios from 'axios'
 const state = () => ({
   token: getItem(TOKEN) || '',
   userInfo: {},
@@ -14,27 +16,27 @@ const state = () => ({
 const actions = {
   // 登录请求
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
-    console.log(1)
-    return new Promise((resolve, reject) => {
-      vlogin({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
-    })
-
+    const { username } = userInfo
+    axios.post('http://backend-api-02.newbee.ltd/manage-api/v1/adminUser/login', {
+      userName: username,
+      passwordMd5: 'e10adc3949ba59abbe56e057f20f883e'
+    }, {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json'
+      }
+    }).then(res => { console.log(res) })
     // return new Promise((resolve, reject) => {
-    //   login({ username: username.trim(), password: password }).then(response => {
-    //     const { data } = response
-    //     commit('SET_TOKEN', data.token)
-    //     setToken(data.token)
+    //   login({
+    //     username,
+    //     passwordMd5: password
+    //   }).then((res) => {
+    //     commit('SET_TOKEN', res.token)
+    //     // 登陆时设置登录时间
+    //     setTime()
     //     resolve()
-    //   }).catch(error => {
-    //     reject(error)
-    //   })
+    //     router.push('/')
+    //   }).catch((err) => reject(err))
     // })
   },
   // 获取用户信息

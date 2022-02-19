@@ -1,11 +1,3 @@
-/*
- * @Descripttion: msg
- * @version: 1.0
- * @Author: 宗
- * @Date: 2022-02-19 18:48:19
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-19 19:21:02
- */
 
 const tokens = {
   admin: {
@@ -38,7 +30,6 @@ module.exports = [
     type: 'post',
     response: config => {
       const { username } = config.body
-      console.log(username)
       const token = tokens[username]
 
       // mock error

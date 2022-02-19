@@ -72,7 +72,7 @@ import { useI18n } from 'vue-i18n'
 
 const i18n = useI18n()
 const loginFrom = ref({
-  username: 'super-admin',
+  username: 'admin',
   password: '123456'
 })
 const loginRules = ref({

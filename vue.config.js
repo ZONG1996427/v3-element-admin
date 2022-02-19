@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-19 08:39:03
+ * @LastEditTime: 2022-02-19 18:56:38
  */
 // 导入path模块
 const path = require('path')
@@ -16,14 +16,25 @@ function resolve(dir) {
 module.exports = {
   publicPath: './',
   // 添加proxy代理
+  // devServer: {
+  //   // 转发地址
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/',
+  //       changeOrigin: true // 开启跨域,解决gitee部署跨域
+  //     }
+  //   }
+  // },
+  outputDir: 'dist',
+  assetsDir: 'static',
+  productionSourceMap: false,
   devServer: {
-    // 转发地址
-    proxy: {
-      '/api': {
-        target: 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/',
-        changeOrigin: true // 开启跨域,解决gitee部署跨域
-      }
-    }
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    before: require('./mock/mock-server.js')
   },
 
   chainWebpack(config) {

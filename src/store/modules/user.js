@@ -1,9 +1,8 @@
-import { login, getUserInfo } from '@/api/user'
+import { getUserInfo, vlogin } from '@/api/user'
 // import md5 from 'md5'
 import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
 import router, { commonRouters } from '@/router'
-import { setTime } from '@/utils/auth'
 import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
 const state = () => ({
@@ -17,17 +16,25 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({
-        username,
-        password
-      }).then((res) => {
-        commit('SET_TOKEN', res.token)
-        // 登陆时设置登录时间
-        setTime()
+      vlogin({ username: username.trim(), password: password }).then(response => {
+        const { data } = response
+        commit('SET_TOKEN', data.token)
         resolve()
-        router.push('/')
-      }).catch((err) => reject(err))
+      }).catch(error => {
+        reject(error)
+      })
     })
+
+    // return new Promise((resolve, reject) => {
+    //   login({ username: username.trim(), password: password }).then(response => {
+    //     const { data } = response
+    //     commit('SET_TOKEN', data.token)
+    //     setToken(data.token)
+    //     resolve()
+    //   }).catch(error => {
+    //     reject(error)
+    //   })
+    // })
   },
   // 获取用户信息
   async getUserInfo({ commit }) {

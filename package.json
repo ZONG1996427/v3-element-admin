@@ -13,6 +13,8 @@
     "driver.js": "^0.9.8",
     "element-plus": "1.1.0-beta.24",
     "md5": "^2.3.0",
+    "mock": "^0.1.1",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.0.0",

@@ -17,6 +17,7 @@ const actions = {
   // 登录请求
   login({ commit }, userInfo) {
     const { username } = userInfo
+    console.log(userInfo)
     axios.post('http://backend-api-02.newbee.ltd/manage-api/v1/adminUser/login', {
       userName: username,
       passwordMd5: 'e10adc3949ba59abbe56e057f20f883e'

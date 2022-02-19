@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="">个人中心</div>
     <el-row>
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
+      <el-col :span="8">
+        <el-card shadow="hover" style="margin: 0 5px">
+          <UserInfo />
+        </el-card>
+      </el-col>
+      <el-col :span="16">
+        <el-card shadow="hover" style="margin: 0 5px"> Hover </el-card>
+      </el-col>
     </el-row>
   </div>
 </template>
 
 <script setup>
+import UserInfo from './components/userInfo'
 import {} from 'vue'
 </script>
 

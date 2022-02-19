@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-import {} from 'vue'
 import Sidebar from './components/Sidebar/index'
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'

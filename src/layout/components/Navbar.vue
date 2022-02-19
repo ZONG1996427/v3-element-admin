@@ -10,11 +10,14 @@
       <lang-select class="right-menu-item hover-effect" />
       <el-dropdown trigger="click" class="avatar-container">
         <div class="avatar-wrapper">
-          <el-avatar
-            shape="square"
-            :size="40"
-            :src="$store.getters.userInfo.avatar"
-          ></el-avatar>
+          <svg-icon
+            style="
+              font-size: 40px;
+              box-shadow: 0 0 3px 1px #999;
+              border-radius: 5px;
+            "
+            icon="user-icon"
+          ></svg-icon>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>

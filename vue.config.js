@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 08:51:14
+ * @LastEditTime: 2022-02-20 08:54:15
  */
 // 导入path模块
 const path = require('path')
@@ -21,18 +21,9 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/',
-        // changeOrigin: true // 开启跨域,解决gitee部署跨域
-        // pathRewrite: {
-        //   '^/api': ''
-        // }
+        changeOrigin: true // 开启跨域
       }
     }
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://backend-api-02.newbee.ltd/manage-api/v1',
-    //     changeOrigin: true // 开启跨域,解决gitee部署跨域
-    //   }
-    // }
   },
 
   chainWebpack(config) {

@@ -1,22 +1,21 @@
-/*
- * @Descripttion: msg
- * @version: 1.0
- * @Author: 宗
- * @Date: 2022-01-19 17:42:04
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 08:37:03
- */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
-// 创建
+/**
+ * @name: request
+ * @msg: 创建axios请求，baseURL三元判断是因为fast mock接口并非真实部署在服务端接口，在前端项目部署到gitee时，接口并没有真实存在的服务器，gitee会拦截掉
+ * 所以在线上环境使用proxy代理还是会出现跨域，直接写死，本地启动时仍然是代理
+ * @param {*}
+ * @return {*}
+ */
 const request = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL,
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/api' : process.env.VUE_APP_BASE_URL,
   timeout: 5000
 })
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {
+  console.log(process.env.NODE_ENV)
   // 在发送请求之前做些什么
   if (store.getters.token) {
     config.headers.Authorization = store.getters.token

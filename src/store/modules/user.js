@@ -17,7 +17,6 @@ const actions = {
   // 登录请求
   login({ commit }, userInfo) {
     const { username, password } = userInfo
-
     return new Promise((resolve, reject) => {
       login({
         username,

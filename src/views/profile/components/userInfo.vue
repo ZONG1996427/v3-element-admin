@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-18 16:42:33
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 10:06:14
+ * @LastEditTime: 2022-02-20 11:53:15
 -->
 <template>
   <div>
@@ -33,8 +33,8 @@
         <span>上次登录地点:</span>
         <span>东莞</span>
       </div>
-      <el-button @click="add">添加route</el-button>
-      <el-button @click="deleteCLickl">删除</el-button>
+      <!-- <el-button @click="add">添加route</el-button>
+      <el-button @click="deleteCLickl">删除</el-button> -->
     </div>
   </div>
 </template>
@@ -43,18 +43,18 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 console.log(router.getRoutes())
-const add = () => {
-  router.addRoute({
-    name: 'about',
-    path: '/about',
-    component: () => import('@/views/user-manage/index')
-  })
-  console.log(router.getRoutes())
-}
-const deleteCLickl = () => {
-  router.removeRoute('about')
-  console.log(router.getRoutes())
-}
+// const add = () => {
+//   router.addRoute({
+//     name: 'about',
+//     path: '/about',
+//     component: () => import('@/views/user-manage/index')
+//   })
+//   console.log(router.getRoutes())
+// }
+// const deleteCLickl = () => {
+//   router.removeRoute('about')
+//   console.log(router.getRoutes())
+// }
 </script>
 <style lang='scss' scoped>
 @import '~@/styles/common.scss';

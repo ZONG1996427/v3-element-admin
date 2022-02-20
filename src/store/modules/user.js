@@ -2,7 +2,7 @@ import { login, getUserInfo } from '@/api/user'
 // import md5 from 'md5'
 import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
-import router, { commonRouters } from '@/router'
+import router, { commonRouters, resetRouter } from '@/router'
 import { setTime } from '@/utils/auth'
 import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
@@ -64,7 +64,7 @@ const actions = {
   },
   // 退出
   logout({ commit }) {
-    // resetRouter()
+    resetRouter()
     removeAllItem()
     // 退出时清除add的路由，vue3提供了removeRoute，vue2是没有的，vue2只能通过原生方法location.reload()来刷新页面重置
     // router.removeRoute

@@ -1,12 +1,12 @@
-import { getUserInfo } from '@/api/user'
+import { login, getUserInfo } from '@/api/user'
 // import md5 from 'md5'
 import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
 import router, { commonRouters } from '@/router'
-// import { setTime } from '@/utils/auth'
+import { setTime } from '@/utils/auth'
 import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
-import axios from 'axios'
+// import axios from 'axios'
 const state = () => ({
   token: getItem(TOKEN) || '',
   userInfo: {},
@@ -17,26 +17,19 @@ const actions = {
   // 登录请求
   login({ commit }, userInfo) {
     const { username, password } = userInfo
-    axios.post('https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/api/sys/login', {
-      username,
-      password
-    }, {
-      headers: {
-        'Content-type': 'application/json'
-      }
-    }).then(res => { console.log(res) })
-    // return new Promise((resolve, reject) => {
-    //   login({
-    //     username,
-    //     password
-    //   }).then((res) => {
-    //     commit('SET_TOKEN', res.token)
-    //     // 登陆时设置登录时间
-    //     setTime()
-    //     resolve()
-    //     router.push('/')
-    //   }).catch((err) => reject(err))
-    // })
+
+    return new Promise((resolve, reject) => {
+      login({
+        username,
+        password
+      }).then((res) => {
+        commit('SET_TOKEN', res.token)
+        // 登陆时设置登录时间
+        setTime()
+        resolve()
+        router.push('/')
+      }).catch((err) => reject(err))
+    })
   },
   // 获取用户信息
   async getUserInfo({ commit }) {

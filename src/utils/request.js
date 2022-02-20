@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 17:42:04
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 08:32:47
+ * @LastEditTime: 2022-02-20 08:37:03
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -12,7 +12,7 @@ import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
 // 创建
 const request = axios.create({
-  // baseURL: process.env.VUE_APP_BASE_URL,
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000
 })
 // 添加请求拦截器

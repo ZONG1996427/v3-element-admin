@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-18 16:42:33
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 11:53:15
+ * @LastEditTime: 2022-02-20 20:25:20
 -->
 <template>
   <div>
@@ -26,12 +26,12 @@
     <el-divider></el-divider>
     <div class="login-info">
       <div class="login-info-item">
-        <span>上次登录时间:</span>
-        <span>2022-02-18</span>
+        <span>上次登录时间：</span>
+        <span>{{ moment().format('YYYY-MM-DD HH:mm:ss') }}</span>
       </div>
       <div class="login-info-item">
-        <span>上次登录地点:</span>
-        <span>东莞</span>
+        <span>上次登录地点：</span>
+        <span>{{ $store.getters.userInfo.address }}</span>
       </div>
       <!-- <el-button @click="add">添加route</el-button>
       <el-button @click="deleteCLickl">删除</el-button> -->
@@ -39,10 +39,7 @@
   </div>
 </template>
 <script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-console.log(router.getRoutes())
+import moment from 'moment'
 // const add = () => {
 //   router.addRoute({
 //     name: 'about',
@@ -81,7 +78,7 @@ console.log(router.getRoutes())
     align-items: center;
     span {
       &:nth-child(2) {
-        padding-left: 70px;
+        padding-left: 60px;
       }
     }
   }

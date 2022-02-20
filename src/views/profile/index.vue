@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-22 17:04:28
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-20 20:14:24
+-->
 <template>
   <div>
     <el-row>
@@ -7,7 +15,7 @@
         </el-card>
       </el-col>
       <el-col :span="16">
-        <el-card shadow="hover" style="margin: 0 5px"> Hover </el-card>
+        <el-card shadow="hover" style="margin: 0 5px"> 开发中。。。 </el-card>
       </el-col>
     </el-row>
   </div>

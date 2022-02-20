@@ -4,9 +4,10 @@
  * @Author: 宗
  * @Date: 2022-02-08 15:32:38
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-18 11:27:14
+ * @LastEditTime: 2022-02-20 10:05:12
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
+import store from '@/store'
 // 将layout抽出来，多个复用
 import layout from '@/layout/index'
 // import { privateRoutes } from './dynamic-router'
@@ -53,6 +54,29 @@ export const commonRouters = [
   }
 
 ]
+
+export function resetRouter() {
+  if (
+    store.getters.addRoutresList &&
+    store.getters.addRoutresList.length
+  ) {
+    // const menus = store.getters.addRoutresList
+    console.log(router.getRoutes())
+    // menus.forEach(menu => {
+    // console.log(menu)
+    router.removeRoute('user')
+    console.log(router.getRoutes())
+    // })
+    // console.log(router)
+    // router.options.routes.forEach(item => {
+    //   if (item.path === '/') {
+    //     // item.children = item.children.filter(x => {
+    //     //   return x.name === 'profile'
+    //     // })
+    //   }
+    // })
+  }
+}
 
 const router = createRouter({
   history: createWebHashHistory(),

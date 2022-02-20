@@ -9,6 +9,7 @@ const getters = {
   token: state => state.user.token,
   userInfo: state => state.user.userInfo,
   menuList: state => state.user.sidebarMenu,
+  addRoutresList: state => state.user.addRoutresList,
   cssVar: state => {
     return {
       ...state.theme.variables,

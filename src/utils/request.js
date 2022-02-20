@@ -1,11 +1,19 @@
+/*
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-19 17:42:04
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-20 11:47:57
+ */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
 /**
  * @name: request
- * @msg: 创建axios请求，baseURL三元判断是因为fast mock接口并非真实部署在服务端接口，在前端项目部署到gitee时，接口并没有真实存在的服务器，gitee会拦截掉
- * 所以在线上环境使用proxy代理还是会出现跨域，直接写死，本地启动时仍然是代理
+ * @msg: 创建axios请求，baseURL三元判断是因为fast mock接口并非真实部署在服务端接口，在前端项目部署到gitee时，接口并没有真实存在的服务器，
+ * gitee会拦截掉，所以在线上环境使用proxy代理还是会出现跨域，直接写死，本地启动时仍然是代理
  * @param {*}
  * @return {*}
  */

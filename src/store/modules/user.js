@@ -26,7 +26,8 @@ const actions = {
         // 登陆时设置登录时间
         setTime()
         resolve()
-        router.push('/')
+        window.location.reload('/') // 暂时先用这种方式重置路由，
+        // router.push('/')
       }).catch((err) => reject(err))
     })
   },
@@ -63,13 +64,14 @@ const actions = {
   },
   // 退出
   logout({ commit }) {
+    // resetRouter()
     removeAllItem()
     // 退出时清除add的路由，vue3提供了removeRoute，vue2是没有的，vue2只能通过原生方法location.reload()来刷新页面重置
     // router.removeRoute
     // commit('CLEAR_ALL_ROUTERS')//暂时无效，后期再看看咋回事，还是先用reload() =,=
     commit('CLEAR_ALL_STATE') // 一定要清除token，否则会一直请求，一直走这个退出
     router.replace({ path: '/login' })
-    window.location.reload()
+    // window.location.reload()
   }
 }
 const mutations = {

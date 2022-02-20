@@ -16,21 +16,19 @@ const state = () => ({
 const actions = {
   // 登录请求
   login({ commit }, userInfo) {
-    const { username } = userInfo
-    console.log(userInfo)
-    axios.post('http://backend-api-02.newbee.ltd/manage-api/v1/adminUser/login', {
-      userName: username,
-      passwordMd5: 'e10adc3949ba59abbe56e057f20f883e'
+    const { username, password } = userInfo
+    axios.post('https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/api/sys/login', {
+      username,
+      password
     }, {
       headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type': 'application/json'
+        'Content-type': 'application/json'
       }
     }).then(res => { console.log(res) })
     // return new Promise((resolve, reject) => {
     //   login({
     //     username,
-    //     passwordMd5: password
+    //     password
     //   }).then((res) => {
     //     commit('SET_TOKEN', res.token)
     //     // 登陆时设置登录时间

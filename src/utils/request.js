@@ -1,15 +1,22 @@
+/*
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-19 17:42:04
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-20 08:32:47
+ */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
 // 创建
 const request = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL,
+  // baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000
 })
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {
-  config.headers['X-Requested-With'] = 'XMLHttpRequest'
   // 在发送请求之前做些什么
   if (store.getters.token) {
     config.headers.Authorization = store.getters.token

@@ -23,12 +23,12 @@ onMounted(() => {
   driver = new Driver({
     // 禁止点击蒙版关闭
     allowClose: false,
+    opacity: 0.75,
     closeBtnText: i18n.t('guide.close'),
     nextBtnText: i18n.t('guide.next'),
     prevBtnText: i18n.t('guide.prev')
   })
 })
-console.log(driver)
 const guideClick = () => {
   driver.defineSteps(steps(i18n))
   driver.start()

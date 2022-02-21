@@ -26,8 +26,8 @@ const actions = {
         // 登陆时设置登录时间
         setTime()
         resolve()
-        window.location.reload('/') // 暂时先用这种方式重置路由，
-        // router.push('/')
+        // window.location.reload('/') // 暂时先用这种方式重置路由，
+        router.push('/')
       }).catch((err) => reject(err))
     })
   },
@@ -45,18 +45,16 @@ const actions = {
     const routes = recursionRouter(menus, privateRoutes)
     // 将匹配的路由进行存储，用来退出用户时清除
     commit('ADD_ALL_ROUTERS_LIST', routes)
-    // console.log(routes)
+    // commonRouters = state.initCommonRoutes
     // 设置默认路由，调用默认路由函数,找到我们需要添加路由的父组件，也就是layout，给他的children添加
-    const MainContainer = commonRouters.find(v => v.path === '/')
-    // console.log(MainContainer) // 返回根组件
-    const children = MainContainer.children
-    children.push(...routes)
+    const children = commonRouters.find(v => v.path === '/').children
+    // // console.log(MainContainer) // 返回根组件
+    // children.push(...routes) // 可以用这种直接添加到/的子组件方法，但是在退出切换用户时，会处理起来很麻烦
     // 过滤不需要显示在菜单中的路由，例如新增，详情，编辑等页面
-    const filterShowRouters = filterRoute(JSON.parse(JSON.stringify(children)))
+    const filterShowRouters = filterRoute(JSON.parse(JSON.stringify([...children, ...routes])))
     // 生成菜单
     commit('SET_SIDEBAR_MENU', filterShowRouters)
     // 初始化路由
-    // let initialRoutes = router.options.routes
     routes.forEach(item => {
       router.addRoute(item)
     })
@@ -66,27 +64,21 @@ const actions = {
   logout({ commit }) {
     resetRouter()
     removeAllItem()
-    // 退出时清除add的路由，vue3提供了removeRoute，vue2是没有的，vue2只能通过原生方法location.reload()来刷新页面重置
-    // router.removeRoute
-    // commit('CLEAR_ALL_ROUTERS')//暂时无效，后期再看看咋回事，还是先用reload() =,=
+    // 退出时清除add的路由，vue3提供了removeRoute，vue2是没有的，只能通过router.matcher=router.matcher来重置或者页面刷新
+    /**
+     * 有如下几种方法方案来重置路由
+     * 1：退出时 调用原生api window.location.reload() 会出现退到登陆页时，刷新一次页面，体验不太好
+     * 2：登录时 调用window.location.reload('/')，跳转到首页，这样自然一些，只是页面刷新了
+     * 3：使用v3方法 removeRoute(路由名称||symbol)
+     */
     commit('CLEAR_ALL_STATE') // 一定要清除token，否则会一直请求，一直走这个退出
     router.replace({ path: '/login' })
-    // window.location.reload()
   }
 }
 const mutations = {
-  SET_INIT_ROUTERS(state, route) {
-    state.initRoutersList = route
-  },
   // 动态添加的路由
   ADD_ALL_ROUTERS_LIST(state, route) {
     state.addRoutresList = route
-  },
-  // 退出时清除当前用户路由
-  CLEAR_ALL_ROUTERS(state) {
-    state.addRoutresList.forEach(item => {
-      router.removeRoute(item)
-    })
   },
   // 设置siderbar菜单
   SET_SIDEBAR_MENU(state, routes) {

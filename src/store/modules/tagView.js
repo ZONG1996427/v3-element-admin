@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-11 14:09:20
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-18 11:34:19
+ * @LastEditTime: 2022-02-21 14:22:39
  */
 import { TAG_VIEW } from '@/constant'
 import { getItem, setItem } from '@/utils/storeage'
@@ -44,6 +44,9 @@ const mutations = {
       return x.meta.affix || x.path === item.path
     })
     setItem(TAG_VIEW, state.tagViewList)
+  },
+  CLEAR_TAG_DATA(state) {
+    state.tagViewList = []
   }
 }
 export default {

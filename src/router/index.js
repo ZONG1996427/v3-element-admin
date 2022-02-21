@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-08 15:32:38
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 10:05:12
+ * @LastEditTime: 2022-02-21 14:00:28
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import store from '@/store'
@@ -55,32 +55,21 @@ export const commonRouters = [
 
 ]
 
+// 退出用户时清除当前用户路由
 export function resetRouter() {
   if (
     store.getters.addRoutresList &&
     store.getters.addRoutresList.length
   ) {
-    // const menus = store.getters.addRoutresList
-    console.log(router.getRoutes())
-    // menus.forEach(menu => {
-    // console.log(menu)
-    router.removeRoute('user')
-    console.log(router.getRoutes())
-    // })
-    // console.log(router)
-    // router.options.routes.forEach(item => {
-    //   if (item.path === '/') {
-    //     // item.children = item.children.filter(x => {
-    //     //   return x.name === 'profile'
-    //     // })
-    //   }
-    // })
+    const menus = store.getters.addRoutresList
+    menus.forEach(menu => {
+      router.removeRoute(menu.name)
+    })
   }
 }
 
 const router = createRouter({
   history: createWebHashHistory(),
-  // routes: [...privateRoutes, ...commonRouters]
   routes: commonRouters
 })
 export default router

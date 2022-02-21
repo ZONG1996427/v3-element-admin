@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 08:54:15
+ * @LastEditTime: 2022-02-21 16:23:34
  */
 // 导入path模块
 const path = require('path')
@@ -15,6 +15,7 @@ function resolve(dir) {
 }
 module.exports = {
   publicPath: './',
+  productionSourceMap: false,
   // 添加proxy代理
   devServer: {
     // 转发地址

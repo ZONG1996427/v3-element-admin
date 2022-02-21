@@ -1,11 +1,10 @@
 <template>
   <div>
-    <el-tooltip content="引导页">
+    <el-tooltip content="引导页" class="without-outline">
       <svg-icon
         style="font-size: 21px"
         icon="icon-guide"
         @click.stop="guideClick"
-        id="guide-start"
       ></svg-icon>
     </el-tooltip>
   </div>

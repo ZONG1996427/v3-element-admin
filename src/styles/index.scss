@@ -56,3 +56,6 @@ div:focus {
     height: 0;
   }
 }
+.without-outline:focus {
+  outline: none !important;
+}

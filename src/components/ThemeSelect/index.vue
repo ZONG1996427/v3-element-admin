@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: msg
+ * @version: 1.0
+ * @Author: 宗
+ * @Date: 2022-01-27 15:33:31
+ * @LastEditors: 宗
+ * @LastEditTime: 2022-02-21 16:15:09
+-->
 <template>
   <!-- 必须加v-bind='$attrs' 接收父组件的参数不进行props定义，否则样式无效 -->
   <el-dropdown
@@ -7,7 +15,7 @@
     @command="handleSetTheme"
   >
     <div>
-      <el-tooltip content="换肤">
+      <el-tooltip content="换肤" class="without-outline">
         <svg-icon id="guide-theme" icon="change-theme"></svg-icon
       ></el-tooltip>
     </div>

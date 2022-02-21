@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-21 14:19:04
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 14:22:18
+ * @LastEditTime: 2022-02-21 16:01:26
 -->
 <template>
   <div class="app-main">
@@ -62,7 +62,7 @@ watch(
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 95px 20px 20px 20px;
+  padding: 15px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

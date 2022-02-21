@@ -3,7 +3,7 @@
     <Hamburger class="Hamburger" />
     <Breadcrumb id="guide-breadcrumb" class="breadcrumb" />
     <div class="right-menu">
-      <Guidance class="theme-select" />
+      <Guidance id="guide-start" class="theme-select" />
       <header-search id="guide-search" class="theme-select" />
       <screenfull id="guide-full" class="theme-select" />
       <theme-select class="theme-select" />

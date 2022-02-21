@@ -12,7 +12,7 @@
       <Sidebar></Sidebar>
     </div>
     <div class="main-container">
-      <div class="fixed-header">
+      <div>
         <Navbar />
         <tagView />
       </div>
@@ -39,14 +39,14 @@ import tagView from '@/components/tagView'
   position: relative;
 }
 
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
-  transition: width #{$sideBarDuration};
-}
+// .fixed-header {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   z-index: 9;
+//   width: calc(100% - #{$sideBarWidth});
+//   transition: width #{$sideBarDuration};
+// }
 
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hiddensideBarWidth});

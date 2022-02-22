@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+
 // 引入国际化
 import i18n from './i18n'
 import installElementPlus from './plugins/element'
@@ -12,8 +13,11 @@ import installIcons from '@/icons'
 import './styles/index.scss'
 // 引入路由权限文件
 import './premission.js'
-
+// 设置全局
+// 时间插件
+import moment from 'moment'
 const app = createApp(App)
+app.config.globalProperties.$moment = moment
 installElementPlus(app)
 installIcons(app)
 app

@@ -1,5 +1,5 @@
 <template>
-  <div class="">文章排名</div>
+  <div class="">创建报表</div>
 </template>
 
 <script setup>

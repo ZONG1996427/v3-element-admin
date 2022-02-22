@@ -22,7 +22,7 @@
       >
         {{ generateTitle(item.meta.title) }}
         <i
-          v-show="item.path !== '/profile'"
+          v-show="item.path !== '/dashboard'"
           class="el-icon-close"
           @click.prevent.stop="onCloseClick(item, index)"
         />
@@ -127,7 +127,7 @@ const closeCurrent = () => {
 // 关闭所有,除了个人中心
 const closeAll = () => {
   store.commit('tagView/DELETE_ALL_TAG')
-  router.push('/profile')
+  router.push('/dashboard')
 }
 // 关闭其他，只保留当前跟不可删除页面
 const closeOther = () => {

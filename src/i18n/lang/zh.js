@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: 宗
  * @Date: 2022-01-27 11:32:09
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-18 15:42:20
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-02-22 15:50:57
  */
 export default {
   login: {
@@ -15,18 +15,18 @@ export default {
     userPlaceholder: '用户名'
   },
   route: {
-    profile: '用户中心',
+    dashboard: '控制台',
     user: '用户管理',
     excelImport: 'Excel导入',
     userManage: '用户列表',
     userInfo: '员工信息',
     roleList: '角色列表',
     permissionList: '权限列表',
-    article: '文章管理',
-    articleRanking: '文章排名',
-    articleCreate: '创建文章',
-    articleDetail: '文章详情',
-    articleEditor: '文章编辑',
+    statement: '报表管理',
+    statementRanking: '报表排名',
+    statementCreate: '创建报表',
+    statementDetail: '报表详情',
+    statementEditor: '报表编辑',
     superView: '超级管理',
     test: 'super测试页',
     orderManage: '商品管理',

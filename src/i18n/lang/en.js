@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: 宗
  * @Date: 2022-01-27 11:32:13
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-18 15:42:21
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-02-22 15:51:01
  */
 export default {
   login: {
@@ -15,18 +15,18 @@ export default {
     userPlaceholder: 'user name'
   },
   route: {
-    profile: 'Profile',
+    dashboard: 'Dashboard',
     user: 'user',
     excelImport: 'ExcelImport',
     userManage: 'EmployeeManage',
     userInfo: 'UserInfo',
     roleList: 'RoleList',
     permissionList: 'PermissionList',
-    article: 'article',
-    articleRanking: 'ArticleRanking',
-    articleCreate: 'ArticleCreate',
-    articleDetail: 'ArticleDetail',
-    articleEditor: 'ArticleEditor',
+    statement: 'statement',
+    statementRanking: 'statementRanking',
+    statementCreate: 'statementCreate',
+    statementDetail: 'statementDetail',
+    statementEditor: 'statementEditor',
     superView: 'superView',
     test: 'testView',
     orderManage: 'orderManage',

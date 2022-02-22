@@ -63,50 +63,50 @@ const privateRoutes = [
     ]
   },
   {
-    path: '/article',
+    path: '/statement',
     component: layout,
-    name: 'article',
-    redirect: '/article/ranking',
+    name: 'statement',
+    redirect: '/statement/ranking',
     meta: {
-      title: 'article',
-      icon: 'article',
-      name: '文章管理'
+      title: 'statement',
+      icon: 'statement',
+      name: '报表管理'
     },
     children: [
       {
-        path: '/article/ranking',
-        component: () => import('@/views/article-ranking/index'),
+        path: '/statement/ranking',
+        component: () => import('@/views/statement-ranking/index'),
         meta: {
-          title: 'articleRanking',
-          icon: 'article-ranking',
-          name: '文章排名',
-          handerSearchLabel: ['文章管理', '文章排名']
+          title: 'statementRanking',
+          icon: 'statement-ranking',
+          name: '报表排名',
+          handerSearchLabel: ['报表管理', '报表排名']
         }
       },
       {
-        path: '/article/detail',
-        component: () => import('@/views/article-detail/index'),
+        path: '/statement/detail',
+        component: () => import('@/views/statement-detail/index'),
         meta: {
-          title: 'articleDetail',
-          name: '文章详情'
+          title: 'statementDetail',
+          name: '报表详情'
         }
       },
       {
-        path: '/article/create',
-        component: () => import('@/views/article-create/index'),
+        path: '/statement/create',
+        component: () => import('@/views/statement-create/index'),
         meta: {
-          title: 'articleCreate',
-          icon: 'article-create',
-          name: '创建文章',
-          handerSearchLabel: ['文章管理', '创建文章']
+          title: 'statementCreate',
+          icon: 'statement-create',
+          name: '创建报表',
+          handerSearchLabel: ['报表管理', '创建报表']
         }
       },
       {
-        path: '/article/editor',
-        component: () => import('@/views/article-create/index'),
+        path: '/statement/editor',
+        component: () => import('@/views/statement-create/index'),
         meta: {
-          title: 'articleEditor',
-          name: '编辑文章'
+          title: 'statementEditor',
+          name: '编辑报表'
         }
       }
     ]
@@ -209,36 +209,36 @@ const privateRoutes = [
     redirect: '/test2/ranking',
     meta: {
       title: 'test2',
-      icon: 'article',
+      icon: 'statement',
       name: '测试管理2'
     },
     children: [
       {
         path: '/test2/ranking',
-        component: () => import('@/views/article-ranking/index'),
+        component: () => import('@/views/statement-ranking/index'),
         meta: {
-          title: 'articleRanking',
-          icon: 'article-ranking',
-          name: '文章排名',
-          handerSearchLabel: ['文章管理', '文章排名']
+          title: 'statementRanking',
+          icon: 'statement-ranking',
+          name: '报表排名',
+          handerSearchLabel: ['报表管理', '报表排名']
         }
       },
       {
         path: '/test2/detail',
-        component: () => import('@/views/article-detail/index'),
+        component: () => import('@/views/statement-detail/index'),
         meta: {
-          title: 'articleDetail',
-          name: '文章详情'
+          title: 'statementDetail',
+          name: '报表详情'
         }
       },
       {
         path: '/test2/create',
-        component: () => import('@/views/article-create/index'),
+        component: () => import('@/views/statement-create/index'),
         meta: {
-          title: 'articleCreate',
-          icon: 'article-create',
-          name: '创建文章',
-          handerSearchLabel: ['文章管理', '创建文章']
+          title: 'statementCreate',
+          icon: 'statement-create',
+          name: '创建报表',
+          handerSearchLabel: ['报表管理', '创建报表']
         }
       }
     ]

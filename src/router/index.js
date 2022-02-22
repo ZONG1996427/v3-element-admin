@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: 宗
  * @Date: 2022-02-08 15:32:38
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 14:00:28
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-02-22 16:10:00
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import store from '@/store'
@@ -20,17 +20,17 @@ export const commonRouters = [
   {
     path: '/',
     component: layout,
-    redirect: '/profile', // 重定向到指定页面，不能一进来是空的页面，个人中心
+    redirect: '/dashboard', // 重定向到指定页面，不能一进来是空的页面，个人中心
     children: [
       {
-        path: '/profile',
-        name: 'profile',
-        component: () => import('@/views/profile/index'),
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
         meta: {
-          title: 'profile',
-          icon: 'el-icon-user',
-          name: '用户中心',
-          handerSearchLabel: ['用户中心'],
+          title: 'dashboard',
+          icon: 'dashboard',
+          name: '控制台',
+          handerSearchLabel: ['控制台'],
           affix: true
         }
       }

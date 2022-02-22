@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: 宗
  * @Date: 2022-01-21 14:19:04
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 16:01:26
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-02-22 16:19:10
 -->
 <template>
   <div class="app-main">
@@ -58,11 +58,14 @@ watch(
 </script>
 <style lang='scss' scoped>
 .app-main {
-  min-height: calc(100vh - 88px);
+  min-height: calc(100vh - 89px);
   width: 100%;
   position: relative;
   overflow: hidden;
   padding: 15px 20px 20px 20px;
   box-sizing: border-box;
+}
+.fixed-header + .app-main {
+  padding-top: 50px;
 }
 </style>

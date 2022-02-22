@@ -3,8 +3,8 @@
  * @version: 1.0
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 16:23:34
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-02-22 10:11:26
  */
 // 导入path模块
 const path = require('path')
@@ -22,7 +22,11 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/',
-        changeOrigin: true // 开启跨域
+        changeOrigin: true, // 开启跨域
+        secure: false,
+        pathRewrite: {
+          '^/api': '/api'
+        }
       }
     }
   },

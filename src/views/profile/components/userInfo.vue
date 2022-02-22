@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-18 16:42:33
  * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 15:48:46
+ * @LastEditTime: 2022-02-21 16:31:14
 -->
 <template>
   <div>
@@ -53,18 +53,21 @@ import moment from 'moment'
     .user-lavel {
       margin-top: 5px;
       color: $color99;
+      font-size: 14px;
     }
   }
 }
 .login-info {
+  font-size: 14px;
   color: $color99;
-  padding: 10px 0;
+  padding: 5px 0;
   .login-info-item {
     display: flex;
     align-items: center;
+    margin-top: 10px;
     span {
       &:nth-child(2) {
-        padding-left: 60px;
+        padding-left: 68px;
       }
     }
   }

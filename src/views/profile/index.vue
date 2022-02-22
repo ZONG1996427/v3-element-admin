@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: msg
- * @version: 1.0
- * @Author: 宗
- * @Date: 2022-01-22 17:04:28
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-20 20:14:24
--->
 <template>
   <div>
     <el-row>
@@ -13,9 +5,15 @@
         <el-card shadow="hover" style="margin: 0 5px">
           <UserInfo />
         </el-card>
+        <el-card shadow="hover" style="margin: 15px 5px">
+          <LangDetails />
+        </el-card>
       </el-col>
       <el-col :span="16">
-        <el-card shadow="hover" style="margin: 0 5px"> 开发中。。。 </el-card>
+        <ShowData />
+        <el-card shadow="hover" style="margin: 15px 5px 0 5px">
+          <Agenda />
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -23,7 +21,15 @@
 
 <script setup>
 import UserInfo from './components/userInfo'
+import ShowData from './components/showData'
+import LangDetails from './components/LangDetails'
+import Agenda from './components/agenda'
 import {} from 'vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.title {
+  padding: 8px 0;
+  border-bottom: 1px solid #dcdfe6;
+}
+</style>

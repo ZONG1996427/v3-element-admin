@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 17:42:04
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-02-22 10:12:38
+ * @LastEditTime: 2022-02-22 10:20:07
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -18,8 +18,7 @@ import { isCheckTimeout } from '@/utils/auth'
  * @return {*}
  */
 const request = axios.create({
-  // baseURL: process.env.NODE_ENV === 'production' ? 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/api' : process.env.VUE_APP_BASE_URL,
-  baseURL: '/api',
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://www.fastmock.site/mock/1d2f66ed7851fccaf05ec18b36cc744e/api' : process.env.VUE_APP_BASE_URL,
   timeout: 5000
 })
 // 添加请求拦截器

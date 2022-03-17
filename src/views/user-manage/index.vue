@@ -180,7 +180,6 @@ const buttonList = [
     text: '查询',
     style: 'primary',
     click: () => {
-      console.log(currentInstance)
       currentInstance.refs.tablePageComponent.queryData()
     }
   },

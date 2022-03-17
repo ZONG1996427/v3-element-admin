@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: msg
- * @version: 1.0
- * @Author: 宗
- * @Date: 2022-01-27 10:01:18
- * @LastEditors: 宗
- * @LastEditTime: 2022-02-21 16:13:52
--->
 <template>
   <el-dropdown
     trigger="click"

@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-21 14:19:04
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-02-22 16:19:10
+ * @LastEditTime: 2022-02-23 15:42:05
 -->
 <template>
   <div class="app-main">
@@ -66,6 +66,6 @@ watch(
   box-sizing: border-box;
 }
 .fixed-header + .app-main {
-  padding-top: 50px;
+  padding-top: 104px;
 }
 </style>

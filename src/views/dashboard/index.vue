@@ -107,20 +107,276 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-row>
+      <el-col :span="8">
+        <el-card style="margin-right: 10px">
+          <h6>用户访问极坐标柱状图</h6>
+          <div style="width: 100%; height: 300px" id="customerChart"></div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card style="margin-right: 10px">
+          <h6>系统信息雷达图</h6>
+          <div style="width: 100%; height: 300px" id="systemChart"></div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card>
+          <h6>南丁格尔图</h6>
+          <div style="width: 100%; height: 300px" id="numChart"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row style="margin-top: 15px">
+      <el-col>
+        <el-card>
+          <h6>折线图</h6>
+          <div style="width: 100%; height: 350px" id="lineChart"></div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script setup>
-import { ref, onActivated } from 'vue'
-import { getDashboard } from '@/api/user'
+import { ref, onActivated, onMounted, watch, computed } from 'vue'
+import { getDashboard } from '@/api/Dashboard'
+import * as echarts from 'echarts'
+import { useStore } from 'vuex'
+const store = useStore()
+let time = null
+const sidebarOpened = computed(() => {
+  return store.getters.sidebarOpened
+})
+watch(sidebarOpened, () => {
+  time = setTimeout(() => {
+    userInfoEchart.resize()
+    systemEchart.resize()
+    numEchart.resize()
+    lineChart.resize()
+    clearTimeout(time)
+  }, 300)
+})
 const DashboardData = ref({})
 onActivated(() => {
   getDashboardData()
+  getEcharts()
+})
+onMounted(() => {
+  // getEcharts()
 })
 const getDashboardData = () => {
   getDashboard().then((result) => {
     DashboardData.value = result
   })
+}
+
+var userInfoEchart = null
+var systemEchart = null
+var numEchart = null
+var lineChart = null
+
+const getEcharts = () => {
+  // 极坐标柱状图
+  userInfoEchart = echarts.init(document.getElementById('customerChart'))
+  userInfoEchart.setOption({
+    radiusAxis: {
+      type: 'category',
+      data: ['a', 'b', 'c', 'd']
+    },
+    polar: {
+      radius: [30, '80%']
+    },
+    angleAxis: {
+      max: 4,
+      startAngle: 75
+    },
+    series: {
+      color: '#409eff',
+      type: 'bar',
+      data: [2, 1.2, 2.4, 3.6],
+      coordinateSystem: 'polar',
+      label: {
+        show: true,
+        position: 'middle',
+        formatter: '{b}: {c}'
+      }
+    }
+  })
+  // 雷达图
+  systemEchart = echarts.init(document.getElementById('systemChart'))
+  systemEchart.setOption({
+    color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+    legend: {},
+    radar: [
+      {
+        indicator: [
+          { text: 'Indicator1' },
+          { text: 'Indicator2' },
+          { text: 'Indicator3' },
+          { text: 'Indicator4' },
+          { text: 'Indicator5' }
+        ],
+        radius: 120,
+        startAngle: 90,
+        splitNumber: 4,
+        shape: 'circle',
+        axisName: {
+          formatter: '【{value}】',
+          color: '#428BD4'
+        },
+        splitArea: {
+          areaStyle: {
+            color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+            shadowColor: 'rgba(0, 0, 0, 0.2)',
+            shadowBlur: 10
+          }
+        },
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(211, 253, 250, 0.8)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(211, 253, 250, 0.8)'
+          }
+        }
+      }
+    ],
+    series: [
+      {
+        type: 'radar',
+        emphasis: {
+          lineStyle: {
+            width: 4
+          }
+        },
+        data: [
+          {
+            value: [100, 8, 0.4, -80, 2000],
+            name: 'Data A'
+          },
+          {
+            value: [60, 5, 0.3, -100, 1500],
+            name: 'Data B',
+            areaStyle: {
+              color: 'rgba(255, 228, 52, 0.6)'
+            }
+          }
+        ]
+      }
+    ]
+  })
+  // 南丁格尔图
+  numEchart = echarts.init(document.getElementById('numChart'))
+  numEchart.setOption({
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    series: [
+      {
+        name: 'Area Mode',
+        type: 'pie',
+        radius: [20, 140],
+        roseType: 'area',
+        itemStyle: {
+          borderRadius: 5
+        },
+        data: [
+          { value: 30, name: 'rose 1' },
+          { value: 28, name: 'rose 2' },
+          { value: 26, name: 'rose 3' },
+          { value: 24, name: 'rose 4' },
+          { value: 22, name: 'rose 5' },
+          { value: 20, name: 'rose 6' },
+          { value: 18, name: 'rose 7' },
+          { value: 16, name: 'rose 8' }
+        ]
+      }
+    ]
+  })
+
+  // 折线图
+  lineChart = echarts.init(document.getElementById('lineChart'))
+  lineChart.setOption({
+    xAxis: {
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      boundaryGap: false,
+      axisTick: {
+        show: false
+      }
+    },
+    grid: {
+      left: 10,
+      right: 10,
+      bottom: 20,
+      top: 30,
+      containLabel: true
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      },
+      padding: [5, 10]
+    },
+    yAxis: {
+      axisTick: {
+        show: false
+      }
+    },
+    legend: {
+      data: ['expected', 'actual']
+    },
+    series: [
+      {
+        name: 'expected',
+        itemStyle: {
+          normal: {
+            color: '#FF005A',
+            lineStyle: {
+              color: '#FF005A',
+              width: 2
+            }
+          }
+        },
+        smooth: true,
+        type: 'line',
+        data: [120, 132, 101, 134, 90, 230, 210],
+        animationDuration: 2800,
+        animationEasing: 'cubicInOut'
+      },
+      {
+        name: 'actual',
+        smooth: true,
+        type: 'line',
+        itemStyle: {
+          normal: {
+            color: '#3888fa',
+            lineStyle: {
+              color: '#3888fa',
+              width: 2
+            },
+            areaStyle: {
+              color: '#f3f8ff'
+            }
+          }
+        },
+        data: [220, 182, 191, 234, 290, 330, 310],
+        animationDuration: 2800,
+        animationEasing: 'quadraticOut'
+      }
+    ]
+  })
+  window.onresize = function () {
+    // 自适应大小
+    userInfoEchart.resize()
+    systemEchart.resize()
+    numEchart.resize()
+    lineChart.resize()
+  }
 }
 </script>
 

@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-27 11:32:09
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-02-22 15:50:57
+ * @LastEditTime: 2022-03-17 09:31:41
  */
 export default {
   login: {
@@ -19,7 +19,7 @@ export default {
     user: '用户管理',
     excelImport: 'Excel导入',
     userManage: '用户列表',
-    userInfo: '员工信息',
+    userInfo: '用户编辑',
     roleList: '角色列表',
     permissionList: '权限列表',
     statement: '报表管理',

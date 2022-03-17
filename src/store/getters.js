@@ -18,6 +18,7 @@ const getters = {
   },
   sidebarOpened: state => state.app.sidebarOpened,
   language: state => state.app.language,
+  isFixedHeader: state => state.settings.isFixedHeader,
   isCurrentColor: state => state.theme.isCurrentColor,
   tagViewList: state => state.tagView.tagViewList,
   currentRoute: state => state.tagView.currentRoute

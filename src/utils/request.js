@@ -4,12 +4,12 @@
  * @Author: 宗
  * @Date: 2022-01-19 17:42:04
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-02-22 10:20:07
+ * @LastEditTime: 2022-03-16 16:42:04
  */
 import axios from 'axios'
-import { ElMessage } from 'element-plus'
 import store from '@/store'
 import { isCheckTimeout } from '@/utils/auth'
+import { messageTip } from '@/utils/message'
 /**
  * @name: request
  * @msg: 创建axios请求，baseURL三元判断是因为fast mock接口并非真实部署在服务端接口，在前端项目部署到gitee时，接口并没有真实存在的服务器，
@@ -28,7 +28,7 @@ request.interceptors.request.use(function (config) {
     config.headers.Authorization = store.getters.token
     if (isCheckTimeout()) {
       store.dispatch('user/logout')
-      ElMessage.error('token失效,退出登录')
+      messageTip('error', 'token失效,退出登录')
     }
   }
 
@@ -46,17 +46,19 @@ request.interceptors.response.use(result => {
     return data
   } else {
     // 2-响应成功，业务失败
-    ElMessage.error(message)
+    // ElMessage.error(message)
+    messageTip('error', message)
     return Promise.reject(data)
   }
   // 响应失败
 }, err => {
   // 服务端token过期，判断状态码
   if (err.response && err.response.data && err.response.data.code === 401) {
-    ElMessage(new Error(err.message))
+    // ElMessage(new Error(err.message))
+    messageTip('error', new Error(err.message))
     store.dispatch('user/logout')
   }
-  ElMessage(new Error(err.message))
+  messageTip('error', new Error(err.message))
   return Promise.reject(err)
 })
 

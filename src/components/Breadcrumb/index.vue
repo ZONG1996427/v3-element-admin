@@ -27,7 +27,7 @@ const generateTitle = (title) => {
 }
 const route = useRoute()
 const breadcrumbData = ref([])
-// 获取当前面包屑层及
+// 获取当前面包屑层级
 const getBreadcrumbData = () => {
   breadcrumbData.value = route.matched.filter(
     (v) => v.meta.name && v.meta.title

@@ -1,12 +1,10 @@
-import { login, getUserInfo } from '@/api/user'
-// import md5 from 'md5'
+import { login, getUserInfo } from '@/api/login'
 import { TOKEN, USERNAME } from '@/constant/index'
 import { setItem, getItem, removeAllItem } from '@/utils/storeage'
 import router, { commonRouters, resetRouter } from '@/router'
 import { setTime } from '@/utils/auth'
 import { recursionRouter, filterRoute } from '@/utils/recursion-router'
 import { privateRoutes } from '@/router/dynamic-router'
-// import axios from 'axios'
 const state = () => ({
   token: getItem(TOKEN) || '',
   userInfo: {},
@@ -26,7 +24,6 @@ const actions = {
         // 登陆时设置登录时间
         setTime()
         resolve()
-        // window.location.reload('/') // 暂时先用这种方式重置路由，
         router.push('/')
       }).catch((err) => reject(err))
     })
@@ -39,17 +36,13 @@ const actions = {
     }
     const res = await getUserInfo(params)
     const { permission: { menus } } = res
-    // 获取res
     commit('SET_USER_INFO', res)
     // 调用方法进行路由匹配
     const routes = recursionRouter(menus, privateRoutes)
     // 将匹配的路由进行存储，用来退出用户时清除
     commit('ADD_ALL_ROUTERS_LIST', routes)
-    // commonRouters = state.initCommonRoutes
-    // 设置默认路由，调用默认路由函数,找到我们需要添加路由的父组件，也就是layout，给他的children添加
     const children = commonRouters.find(v => v.path === '/').children
-    // // console.log(MainContainer) // 返回根组件
-    // children.push(...routes) // 可以用这种直接添加到/的子组件方法，但是在退出切换用户时，会处理起来很麻烦
+    // children.push(...routes) // 可以用这种直接添加到/的子组件方法，但是在退出切换用户时，会处理起来很麻烦,建议不使用
     // 过滤不需要显示在菜单中的路由，例如新增，详情，编辑等页面
     const filterShowRouters = filterRoute(JSON.parse(JSON.stringify([...children, ...routes])))
     // 生成菜单

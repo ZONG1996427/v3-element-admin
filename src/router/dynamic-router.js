@@ -48,7 +48,8 @@ const privateRoutes = [
         component: () => import('@/views/user-info/index'),
         meta: {
           title: 'userInfo',
-          name: '用户详情'
+          name: '用户编辑',
+          activeMenu: '/user/manage' // 非菜单展示页面需指定高亮一级菜单名称
         }
       },
       {
@@ -88,7 +89,8 @@ const privateRoutes = [
         component: () => import('@/views/statement-detail/index'),
         meta: {
           title: 'statementDetail',
-          name: '报表详情'
+          name: '报表详情',
+          activeMenu: '/statement/ranking'
         }
       },
       {
@@ -106,7 +108,8 @@ const privateRoutes = [
         component: () => import('@/views/statement-create/index'),
         meta: {
           title: 'statementEditor',
-          name: '编辑报表'
+          name: '编辑报表',
+          activeMenu: '/statement/create'
         }
       }
     ]

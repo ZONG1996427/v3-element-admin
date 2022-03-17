@@ -1,16 +1,16 @@
 import { createStore } from 'vuex'
-import user from './modules/user'
-import app from './modules/app'
-import theme from './modules/theme'
-import tagView from './modules/tagView'
 import getters from './getters'
-// 模块单个引入，后面还是用require.context()方法遍历
+
+// 动态导入，如果用vite需要改，因为require.context是webpack的方法，vite是import.meta.globEager()
+const modulesFiles = require.context('./modules', true, /\.js$/)
+const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+  const value = modulesFiles(modulePath)
+  modules[moduleName] = value.default
+  return modules
+}, {})
+
 export default createStore({
   getters,
-  modules: {
-    user,
-    app,
-    theme,
-    tagView
-  }
+  modules
 })

@@ -1,27 +1,11 @@
 import request from '@/utils/request'
-const login = (data) => {
+const getUerList = (params) => {
   return request({
-    url: '/login',
-    method: 'post',
-    data
-  })
-}
-// 获取用户
-const getUserInfo = (params) => {
-  return request({
-    url: '/getUserInfo',
+    url: '/user',
     method: 'get',
     params
   })
 }
-const getDashboard = () => {
-  return request({
-    url: '/dashboard',
-    method: 'get'
-  })
-}
 export {
-  login,
-  getUserInfo,
-  getDashboard
+  getUerList
 }

@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-02-08 15:32:38
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-03-17 12:38:52
+ * @LastEditTime: 2022-03-17 16:03:44
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import store from '@/store'

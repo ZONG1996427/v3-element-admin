@@ -4,17 +4,22 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-02-22 10:20:04
+ * @LastEditTime: 2022-03-17 19:32:47
  */
 // 导入path模块
 const path = require('path')
-
+// 判断环境
+const isProd = process.env.NODE_ENV === 'production'
+const CompressionPlugin = require('compression-webpack-plugin')
 // 标准的路径处理函数
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
   publicPath: './',
+  outputDir: 'dist',
+  assetsDir: 'static',
+  lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   // 添加proxy代理
   devServer: {
@@ -28,6 +33,14 @@ module.exports = {
   },
 
   chainWebpack(config) {
+    if (isProd) {
+      config.plugin('compression-webpack-plugin')
+        .use(new CompressionPlugin({
+          test: /\.js$|\.html$|\.css$/, // 匹配文件名
+          threshold: 10240, // 对超过10k的数据压缩
+          deleteOriginalAssets: false // 不删除源文件
+        }))
+    }
     // 设置 svg-sprite-loader
     // 插件的注入以及处理,这是chainWebpack的高级链式写法
     // 复习以下以下api的作用吧
@@ -53,6 +66,9 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
+      .end()
+      .use('svgo-loader')
+      .loader('svgo-loader')
       .end()
   }
 }

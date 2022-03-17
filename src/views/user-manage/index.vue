@@ -198,8 +198,6 @@ const buttonList = [
       if (!setSelectList.value.length) {
         return messageTip('warning', '请勾选要删除的数据')
       }
-
-      // currentInstance.ctx.$refs.tablePageComponent.getTableData('allDelete')
       ElMessageBox.confirm('确认批量删除数据吗?', '删除', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',

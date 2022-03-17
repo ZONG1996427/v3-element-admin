@@ -225,6 +225,8 @@ const props = defineProps({
     }
   }
 })
+// 子传父都定义在defineEmits中
+const emits = defineEmits(['selectChange'])
 const disabled = ref(false)
 onMounted(() => {
   if (props.buttonList.length) {
@@ -280,12 +282,12 @@ const getTableData = (loading = 'queryLoading') => {
       tableDataloading.value = false
     })
 }
-// 子传父都定义在defineEmits中
-const emits = defineEmits(['selectChange'])
+
 // 多选事件
 const handleSelectionChange = (arr) => {
   emits('selectChange', arr)
 }
+
 // 查询,默认loading
 const queryData = () => {
   getTableData('queryLoading')

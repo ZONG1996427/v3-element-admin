@@ -172,6 +172,7 @@ const costomColumns = computed(() => {
     }
   ]
 })
+
 // 配置单独按钮
 const buttonList = [
   {
@@ -179,14 +180,15 @@ const buttonList = [
     text: '查询',
     style: 'primary',
     click: () => {
-      currentInstance.ctx.$refs.tablePageComponent.queryData()
+      console.log(currentInstance)
+      currentInstance.refs.tablePageComponent.queryData()
     }
   },
   {
     type: 'resetLoading',
     text: '重置',
     click: () => {
-      currentInstance.ctx.$refs.tablePageComponent.reSetData()
+      currentInstance.refs.tablePageComponent.reSetData()
     }
   },
   {
@@ -207,7 +209,7 @@ const buttonList = [
         .then(() => {
           messageTip('success', '删除成功')
           // 调用子组件方法刷新列表
-          currentInstance.ctx.$refs.tablePageComponent.getTableData('allDelete')
+          currentInstance.refs.tablePageComponent.getTableData('allDelete')
         })
         .catch(() => {
           messageTip('info', '删除失败')

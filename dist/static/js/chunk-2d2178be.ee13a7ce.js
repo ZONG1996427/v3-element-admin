@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2178be"],{c6d9:function(n,e,c){"use strict";c.r(e);var t=c("8bbf");function o(n,e){return Object(t["openBlock"])(),Object(t["createElementBlock"])("div",null,"超级管理员页面")}var r=c("6b0d"),b=c.n(r);const d={},u=b()(d,[["render",o]]);e["default"]=u}}]);

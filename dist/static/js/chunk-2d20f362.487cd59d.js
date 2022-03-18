@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d20f362"],{b350:function(n,e,c){"use strict";c.r(e);var t=c("7a23");function o(n,e){return Object(t["openBlock"])(),Object(t["createElementBlock"])("div",null,"用户详情123")}var r=c("6b0d"),u=c.n(r);const a={},d=u()(a,[["render",o]]);e["default"]=d}}]);

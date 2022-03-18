@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d231216"],{eedd:function(e,n,c){"use strict";c.r(n);var t=c("8bbf");function o(e,n){return Object(t["openBlock"])(),Object(t["createElementBlock"])("div",null,"商品列表")}var d=c("6b0d"),r=c.n(d);const u={},b=r()(u,[["render",o]]);n["default"]=b}}]);

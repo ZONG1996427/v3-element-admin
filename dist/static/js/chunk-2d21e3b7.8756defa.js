@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21e3b7"],{d54d:function(n,e,c){"use strict";c.r(e);var t=c("8bbf"),o={class:""},u={setup:function(n){return function(n,e){return Object(t["openBlock"])(),Object(t["createElementBlock"])("div",o," 权限列表,完成了路由控制，权限控制就是走接口而已，改变用户的菜单等 ")}}};const s=u;e["default"]=s}}]);

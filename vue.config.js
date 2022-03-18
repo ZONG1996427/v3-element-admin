@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-03-18 14:12:10
+ * @LastEditTime: 2022-03-18 14:14:35
  */
 // 导入path模块
 const path = require('path')
@@ -17,8 +17,8 @@ const devNeedCdn = false
 const cdn = {
   // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
   externals: {
-    vue: 'Vue',
-    vuex: 'Vuex',
+    vue: 'vue',
+    vuex: 'vuex',
     'vue-router': 'VueRouter'
   },
   // cdn的css链接

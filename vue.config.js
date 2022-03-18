@@ -4,7 +4,7 @@
  * @Author: 宗
  * @Date: 2022-01-19 16:47:14
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-03-18 13:49:10
+ * @LastEditTime: 2022-03-18 13:58:29
  */
 // 导入path模块
 const path = require('path')
@@ -27,10 +27,10 @@ const cdn = {
   ],
   // cdn的js链接
   js: [
-    'https://cdn.bootcss.com/vue/3.2.0/vue.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue/3.2.0/vue.cjs.min.js',
     'https://cdn.jsdelivr.net/npm/element-plus',
-    'https://cdn.bootcss.com/vuex/4.0.0-0/vuex.min.js',
-    'https://cdn.bootcss.com/vue-router/4.0.0-0/vue-router.min.js'
+    'https://cdn.bootcdn.net/ajax/libs/vuex/4.0.0/vuex.cjs.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.0/vue-router.cjs.min.js'
   ]
 }
 

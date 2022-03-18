@@ -6,18 +6,10 @@
   >
     <slot />
   </el-scrollbar>
-  <!-- <el-scrollbar
-    ref="scrollContainer"
-    :vertical="false"
-    class="scroll-container"
-    @wheel.prevent="handleScroll"
-  >
-    <slot />
-  </el-scrollbar> -->
 </template>
 
 <script>
-const tagAndTagSpacing = 4 // tagAndTagSpacing
+const tagAndTagSpacing = 4
 
 export default {
   name: 'ScrollPane',
@@ -31,23 +23,7 @@ export default {
       return this.$refs.scrollContainer.$refs.wrap
     }
   },
-  // mounted() {
-  //   this.scrollWrapper.addEventListener('scroll', this.emitScroll, true)
-  // },
-  // beforeUnmount() {
-  //   this.scrollWrapper.removeEventListener('scroll', this.emitScroll)
-  // },
   methods: {
-    // handleScroll(e) {
-    //   console.log(e)
-    //   const eventDelta = e.wheelDelta || -e.deltaY * 40
-    //   const $scrollWrapper = this.scrollWrapper
-    //   $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4
-    // },
-    // emitScroll() {
-    //   this.$emit('scroll')
-    // },
-
     /**
      * @name: moveToTarget
      * @msg: 标签移动核心代码,其他可以不用

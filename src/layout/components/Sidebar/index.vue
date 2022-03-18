@@ -2,7 +2,7 @@
   <div>
     <div class="sideBar-header-container">
       <img src="../../../icons/svg/YYDS.jpg" alt="YYDS" />
-      <p v-if="$store.getters.sidebarOpened">祖师爷赏饭吃</p>
+      <p v-if="$store.getters.sidebarOpened">v3-admin</p>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>

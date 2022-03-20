@@ -1,6 +1,6 @@
-
 <template>
   <el-card>
+    <h4>{{ tableTitle }}</h4>
     <div class="tablePage-container">
       <el-form :inline="true" :model="form" class="demo-form-inline">
         <el-form-item
@@ -51,11 +51,13 @@
             :loading="buttonLoading[item.type]"
             :type="item.style"
             @click="item.click"
-            >{{ item.text }}</el-button
+          >{{ item.text }}
+          </el-button
           >
         </el-form-item>
       </el-form>
       <el-table
+        ref="tablePageRef"
         v-loading="tableDataloading"
         :data="tableData"
         show-overflow-tooltip
@@ -120,6 +122,24 @@
 </template>
 <script setup>
 import { ref, defineProps, onMounted, defineExpose, defineEmits } from 'vue'
+import sortable from 'sortablejs'
+
+const tablePageRef = ref(null) // ref表格
+// 1-初始化方法
+const initSortable = () => {
+  // 2-找到拖拽的元素
+  const el = tablePageRef.value.$el.querySelector(
+    '.el-table__body-wrapper > table > tbody'
+  )
+  // 第一个参数就是传入元素
+  sortable.create(el, {
+    // 配置参数
+    ghostClass: 'table-drag',
+    onEnd() {
+    }
+  })
+}
+
 const page = ref({
   total: 0,
   pageSize: 10,
@@ -159,6 +179,16 @@ const buttonLoading = ref({}) // tableloading
 // }
 const form = ref({}) // 查询条件form
 const props = defineProps({
+  // 是否开启表格拖拽
+  isDrag: {
+    default: false,
+    type: Boolean
+  },
+  // 表格标题
+  tableTitle: {
+    default: '动态配置化表格',
+    type: String
+  },
   // 操作栏宽度
   operationWidth: {
     default: 100
@@ -170,12 +200,14 @@ const props = defineProps({
         {
           name: '编辑',
           hidden: false,
-          click: (row) => {}
+          click: (row) => {
+          }
         },
         {
           name: '删除',
           hidden: false,
-          click: (row) => {}
+          click: (row) => {
+          }
         }
       ]
     },
@@ -234,6 +266,10 @@ onMounted(() => {
   }
   getTableData()
   initForm('resetLoading')
+  // 初始化拖拽
+  if (props.isDrag) {
+    initSortable()
+  }
 })
 // 初始化查询条件配置按钮loading
 const initButtonLoading = () => {
@@ -312,14 +348,26 @@ defineExpose({
 })
 </script>
 <style lang='scss' scoped>
+h4 {
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 2px solid red;
+  margin-bottom: 10px;
+}
+
 .pages-container {
   display: flex;
   align-items: center;
   margin-left: auto;
   margin-top: 15px;
 }
+
 .tablePage-container {
   display: flex;
   flex-direction: column;
+}
+
+::v-deep .table-drag {
+  background-color: #304156;
 }
 </style>

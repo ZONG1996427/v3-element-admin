@@ -7,6 +7,7 @@
       :searchColumns="searchColumns"
       :operationList="operationList"
       isSelection
+      :isDrag="false"
       ref="tablePageComponent"
       @selectChange="getSelectData"
     />
@@ -20,6 +21,7 @@ import { getUerList } from '@/api/user'
 import { ElMessageBox } from 'element-plus'
 import { messageTip } from '@/utils/message'
 import { useRouter } from 'vue-router'
+
 const tableUrl = {
   list: getUerList
 }
@@ -205,7 +207,7 @@ const buttonList = [
       })
         .then(() => {
           messageTip('success', '删除成功')
-          // 调用子组件方法刷新列表
+          // 调用子组件方法刷新列表 这里穿的参数要跟type一样
           currentInstance.refs.tablePageComponent.getTableData('allDelete')
         })
         .catch(() => {

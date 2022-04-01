@@ -1,5 +1,5 @@
   本项目使用最新技术vue3+vue-router4+vuex4+element-plus重构git高星项目element-admin  
-   线上预览地址：http://175.178.211.106/#/login
+   线上预览地址：http://175.178.211.106/#/login 
     # 功能点如下  
     # 1-compistion-api,组件状态驱动的动态css，vue3新语法开发  
     # 2-router4新方法addRoute()以及removeRouter() 【vue2中addRouters是添加一个数组，3中是对象，3中新增了remove路由，解决了vue2的一些删除路由的痛点】  

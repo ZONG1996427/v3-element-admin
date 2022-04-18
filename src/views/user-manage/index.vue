@@ -21,7 +21,6 @@ import { getUerList } from '@/api/user'
 import { ElMessageBox } from 'element-plus'
 import { messageTip } from '@/utils/message'
 import { useRouter } from 'vue-router'
-
 const tableUrl = {
   list: getUerList
 }
